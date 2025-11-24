@@ -96,7 +96,6 @@ $smarttv_id=0;
 	<script type="text/javascript" src="js/keycodes.js"></script>
 	<script type="text/javascript" src="js/controlsRik.js?r=<?php echo(rand()); ?>"></script>
 	<script type="text/javascript" src="js/messenger.js"></script>
-	<--script type="text/javascript" src="http://rikad.smart-tv-data.com/pi/piwik.js"></script-->
 
 	<?php 
 	//Ref.player 3
