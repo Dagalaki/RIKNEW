@@ -151,7 +151,7 @@ this.createSkip = function () {
 	
 	this.navigateBottom = this.__proto__.navigateBottom || function(key){
 		var self = this;
-		var btnsSize = 2;
+		var btnsSize = 1;
 		if (self.onAdBreak){
 			self.navigate(key);
 			return;
