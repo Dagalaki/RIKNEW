@@ -339,7 +339,7 @@ this.createSkip = function () {
 				if(!self.live){
 					self.displayPlayer();
 					self.onExtraBtns = true;
-					self.extraFocusedId = 1;
+					self.extraFocusedId = 0;
 					self.setFocusOnExtraBtn();
 				}else{
 					self.onExtraBtns = false;

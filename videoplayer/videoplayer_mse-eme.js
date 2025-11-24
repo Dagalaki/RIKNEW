@@ -28,6 +28,10 @@ VideoPlayerEME.prototype.createPlayer = function(){
 			+'<div id="prew"></div>'
 			+'<div id="ppauseplay" class="pause"><div class="vcrbtn"></div><span id="pauseplay"></span></div> '
 			+'<div id="pff"></div>'
+			+'<div id="extra-btns">'
+			+'<div class="extra-btn" id="back-btn"><span>Back</span><div class="picon"></div></div>'
+			/*+'<div class="piconbg extra-btn" id="extra3"><div class="picon" id="extra-btn3"></div></div>'*/
+			+'</div>'
 			+'<div id="subtitleButton"><div id="subtitleButtonText">Subtitles</div></div>'
 			+'<div id="audioButton"><div id="audioButtonText">Audio</div></div>'
 			+'<div id="playText"></div>'
@@ -363,6 +367,7 @@ VideoPlayerEME.prototype.setURL = function(url){
 };
 
 VideoPlayerEME.prototype.checkAds = function(){
+	return true;
 	//console.log("checkAds");
 	if( this.adBreaks ){
 		
@@ -704,7 +709,7 @@ VideoPlayerEME.prototype.startVideo = function( isLive ){
 	// first play preroll if present
 	var playPreroll = false;
 	// check prerolls on first start
-	if( self.adBreaks ){
+	/*if( self.adBreaks ){
 		$.each( self.adBreaks, function(n, adBreak){
 			if( !adBreak.played && adBreak.position == "preroll" ){
 				console.log("play preroll");
@@ -717,7 +722,7 @@ VideoPlayerEME.prototype.startVideo = function( isLive ){
 		if( playPreroll ){
 			return; // return startVideo(). after prerolls this is called again
 		}
-	}
+	}*/
 	
 	try{	/*
 		self.element.removeClass("hidden");
