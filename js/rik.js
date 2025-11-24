@@ -2759,6 +2759,9 @@ HorizontalList.prototype.initEpisodes = function (parent, xpos, ypos) {
 
 		var im = document.createElement('img');
 		im.src = "http://rik.smart-tv-data.com/" +  this.items[i].img;
+        var titl = createClassDiv('', '', 'title');
+        titl.innerHTML = this.items[i].dt;
+        inner.appendChild(titl);
 		inner.appendChild(im);
 		this.outer.appendChild(inner);
 		this.buttons.push(inner);
@@ -2821,6 +2824,10 @@ HorizontalList.prototype.initSideEpisodes = function (parent, xpos, ypos) {
 		var day = ("0" + date.getDate()).slice(-2);*/
 		this.items[i].title = this.items[i].date;
 
+
+         var titl = createClassDiv('', '', 'title');
+        titl.innerHTML = this.items[i].title;
+        inner.appendChild(titl);
 		inner.appendChild(im);
 		this.outer.appendChild(inner);
 		this.buttons.push(inner);

@@ -212,24 +212,26 @@ div.list-container.league .start-info {
     font-weight: bold;
     color: #eeeeee;
     text-shadow: 2px 2px 2px black;
-    top:135px;
+    top:96px;
 }
 
 #episodes .start-info-title {
     /*display: none !important;*/
-    top: 135px;
+    top: 103px;
 }
+
+
 
 .start-info-data {
     position: relative;
-    font-size: 15px;
+    font-size: 20px;
     color: #eeeeee;
     text-shadow: 2px 2px 2px black;
     /*background-color: rgba(0, 0, 0, 0.5);*/
     border-radius: 10px;
     padding: 20px 0;
     position: absolute !important;
-    top: 183px !important;
+    top: 130px !important;
 }
 #bg-logo {
 	position: absolute;
@@ -326,6 +328,28 @@ div.list-container.league .start-info {
     margin: 4px;
     border: solid 3px transparent;
     border-radius:10px;
+}
+
+.movies-category .episode .title,  .show .title{
+    font-size: 20px;
+    font-weight: bold;
+    font-size: 18px;
+    color: #eeeeee;
+    text-align: center;
+    width: inherit;
+    top: 86px;
+    padding-top: 5px;
+    height: 53px;
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color:white;
+        text-shadow: rgb(10, 10, 17) 0px 0px 30px;
+}
+
+.show .title{
+    top:165px;
+    display: block!important;
 }
 
 .movies-category .event-list .episode.focused {
