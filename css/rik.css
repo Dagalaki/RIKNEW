@@ -345,7 +345,7 @@ div.list-container.league .start-info {
     text-align: center;
     width: inherit;
     top: 86px;
-    padding-top: 5px;
+    padding-top: 7px;
     height: 53px;
     font-weight: bold;
     overflow: hidden;
@@ -1146,8 +1146,16 @@ div.list-container.league .start-info {
     position: relative;
     clear: both;
     float: left;
-    width: 300px;
+    width: 312px;
     height: 684px;
+}
+
+.submenu .outer{
+    width:100%;
+}
+
+.submenu .outer .inner{
+ width: 68%;
 }
 
 .sidebar .submenu .inner .text {
@@ -1158,10 +1166,17 @@ div.list-container.league .start-info {
     visibility: visible !important;
     line-height: 40px;
     width: 160px;
+    margin-left: 12px;
 }
 
 .sidebar .inner.focused {
     height: 684px;
+    
+}
+
+.submenu .outer .inner.focused{
+    border: solid 4px white;
+    padding: 1px;
 }
 
 .sidebar .inner img {
@@ -1179,7 +1194,7 @@ div.list-container.league .start-info {
 }
 
 .sidebar .submenu {
-    width: 300px;
+    width: 321px;
     height: 606px !important;
     position: relative;
     display:block;
@@ -1191,6 +1206,7 @@ div.list-container.league .start-info {
     font-size: 17px;
     margin-bottom: 10px;
     left: 75px;
+    
 }
 
 .sidebar .submenu .inner.seperator {
@@ -1209,13 +1225,14 @@ div.list-container.league .start-info {
     border: solid 4px white;
 }
 .sidebar .submenu .inner.focused .menuelemicon {
-    border-left: solid 4px white;
+    /*border-left: solid 4px white;
     border-top: solid 4px white;
-    border-bottom: solid 4px white;
+    border-bottom: solid 4px white;*/
+    
 }
 
 .sidebar.closed .submenu .inner.active .menuelemicon {
-    border-right: solid 4px white;
+   /* border-right: solid 4px white;*/
 }
 
 .sidebar .submenu .inner.focused .menuelemicon.big {
@@ -1239,9 +1256,7 @@ div.list-container.league .start-info {
 }
 
 .sidebar .submenu .inner.active .menuelemicon {
-    border-left: solid 4px white;
-    border-top: solid 4px white;
-    border-bottom: solid 4px white;
+    
 }
 
 .sidebar .submenu .inner.active .menuelemicon.big {
@@ -1263,18 +1278,16 @@ div.list-container.league .start-info {
 .sidebar .submenu .inner.focused .text {
 
     font-weight: bold;
-    border-top: solid 4px white;
+   /* border-top: solid 4px white;
     border-bottom: solid 4px white;
-    border-right: solid 4px white;
+    border-right: solid 4px white;*/
     padding-right: 5px;
 }
 
 .sidebar .submenu .inner.active .text {
 
     font-weight: bold;
-    border-top: solid 4px white;
-    border-bottom: solid 4px white;
-    border-right: solid 4px white;
+   
     padding-right: 5px;
 }
 
