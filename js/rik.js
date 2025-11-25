@@ -25,6 +25,16 @@ function getSchedule() {
 	//ret.push(schedule[0]);
 	return ret;
 }
+
+function uppercaseGreekWithoutAccents(str) {
+  return str
+    .replace(/ς/g, "σ")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toUpperCase();
+}
+
+
 function getScheduleAll() {
 	var schedule = GLOBALS.scenemgr.live.schedule, ret=[];
 	var ts = (new Date()).getTime()/1000;
@@ -2535,7 +2545,7 @@ HorizontalList.prototype.initShows = function (parent, xpos, ypos) {
         var title = createClassDiv("", "", "title");
         title.style.display = "none";
         title.innerHTML = this.items[i].title;
-        title.innerHTML = title.innerHTML.toUpperCase();
+        title.innerHTML = uppercaseGreekWithoutAccents(title.innerHTML);
         inner.appendChild(title);
         this.outer.appendChild(inner);
         this.buttons.push(inner);
@@ -2762,7 +2772,7 @@ HorizontalList.prototype.initEpisodes = function (parent, xpos, ypos) {
 		im.src = "http://rik.smart-tv-data.com/" +  this.items[i].img;
         var titl = createClassDiv('', '', 'title');
         titl.innerHTML = this.items[i].dt;
-        titl.innerHTML = titl.innerHTML.toUpperCase();
+        titl.innerHTML = uppercaseGreekWithoutAccents(titl.innerHTML);
         inner.appendChild(titl);
 		inner.appendChild(im);
 		this.outer.appendChild(inner);
@@ -2829,7 +2839,7 @@ HorizontalList.prototype.initSideEpisodes = function (parent, xpos, ypos) {
 
          var titl = createClassDiv('', '', 'title');
         titl.innerHTML = this.items[i].title;
-        titl.innerHTML = titl.innerHTML.toUpperCase();
+        titl.innerHTML = uppercaseGreekWithoutAccents(titl.innerHTML);
         inner.appendChild(titl);
 		inner.appendChild(im);
 		this.outer.appendChild(inner);
@@ -2913,7 +2923,7 @@ HorizontalList.prototype.initLexeisEpisodes = function (parent, xpos, ypos, titl
                 break;
         }
 
-        titl.innerHTML =  titl.innerHTML.toUpperCase();
+        titl.innerHTML =  uppercaseGreekWithoutAccents(titl.innerHTML);
 
         inner.appendChild(im);
         inner.appendChild(titl);
