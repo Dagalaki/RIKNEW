@@ -2535,6 +2535,7 @@ HorizontalList.prototype.initShows = function (parent, xpos, ypos) {
         var title = createClassDiv("", "", "title");
         title.style.display = "none";
         title.innerHTML = this.items[i].title;
+        title.innerHTML = title.innerHTML.toUpperCase();
         inner.appendChild(title);
         this.outer.appendChild(inner);
         this.buttons.push(inner);
@@ -2761,6 +2762,7 @@ HorizontalList.prototype.initEpisodes = function (parent, xpos, ypos) {
 		im.src = "http://rik.smart-tv-data.com/" +  this.items[i].img;
         var titl = createClassDiv('', '', 'title');
         titl.innerHTML = this.items[i].dt;
+        titl.innerHTML = titl.innerHTML.toUpperCase();
         inner.appendChild(titl);
 		inner.appendChild(im);
 		this.outer.appendChild(inner);
@@ -2827,6 +2829,7 @@ HorizontalList.prototype.initSideEpisodes = function (parent, xpos, ypos) {
 
          var titl = createClassDiv('', '', 'title');
         titl.innerHTML = this.items[i].title;
+        titl.innerHTML = titl.innerHTML.toUpperCase();
         inner.appendChild(titl);
 		inner.appendChild(im);
 		this.outer.appendChild(inner);
@@ -2909,6 +2912,8 @@ HorizontalList.prototype.initLexeisEpisodes = function (parent, xpos, ypos, titl
             default:
                 break;
         }
+
+        titl.innerHTML =  titl.innerHTML.toUpperCase();
 
         inner.appendChild(im);
         inner.appendChild(titl);
