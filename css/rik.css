@@ -396,12 +396,12 @@ div.list-container.league .start-info {
 
 .movies-category .event-list .show img{
     position: relative;
-    bottom:10px;
+   /* bottom:10px;*/
 }
 
 
 .movies-category .event-list .show.focused img{
-    bottom:12px;
+   /* bottom:12px;*/
 }
 
 
