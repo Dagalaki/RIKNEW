@@ -368,7 +368,7 @@ div.list-container.league .start-info {
     top:6px;
     margin:6px;
     width: 160px;
-    height: 216px;
+    height: 222px;
     /* background-color: #514f4f; */
     position: relative;
     float: left;
@@ -393,7 +393,7 @@ div.list-container.league .start-info {
 
 .movies-category .event-list .show img{
     position: relative;
-    bottom:16px;
+    bottom:12px;
 }
 
 .movies-category .event-list .show.focused img{
