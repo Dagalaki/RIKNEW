@@ -1186,7 +1186,7 @@ div.list-container.league .start-info {
 }
 
 .sidebar .submenu .inner {
-    height: 50px;
+    height: 55px;
     color: white;
     font-size: 17px;
     margin-bottom: 10px;
@@ -1251,8 +1251,8 @@ div.list-container.league .start-info {
 .sidebar .submenu .inner div {
     position: relative;
     float: left;
-    padding-left: 3px;
-    height: 40px;
+  
+    height: 45px;
 }
 
 .sidebar .submenu .inner .text {
@@ -1287,8 +1287,8 @@ div.menuelemicon {
 }
 
 div.menuelemicon .icon {
-    width: 40px !important;
-    height: 40px !important;
+    width: 45px !important;
+    height: 45px !important;
     background-repeat: no-repeat;
     background-size: 35px 35px;
     position: relative;
@@ -1332,6 +1332,12 @@ div.menuelemicon .icon.lexeis {
 div.menuelemicon .icon.signup {
     background-image: url(../img/hybrid-icons/login.png);
 }
+
+div.menuelemicon .icon{
+    background-size: 45px 45px ;
+    background-repeat: no-repeat;
+}
+
 div.menuelemicon .icon.home {
     /*background-image: url(../img/hybrid-icons/home.svg);*/
     background-image:url(../img/icons/F.png);
