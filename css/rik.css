@@ -1,3 +1,10 @@
+img{
+        display: inline-block;
+    vertical-align: middle;
+    max-width: 100%;
+    height: auto;
+}
+
 #appscreen {
     background: none !important;
     background-color: #07071C !important;
@@ -290,14 +297,14 @@ div.list-container.league .start-info {
 .movies-category {
     clear: both;
     float: left;
-    height: 270px;
+    height: 290px;
     width: 100%;
     top: 434px;
     position: relative;
 }
 
 .movies-category .event-list {
-    height: 227px;
+    height: 240px;
     top: 35px;
     left: 110px;
     transition: left 0.5s;
@@ -358,7 +365,8 @@ div.list-container.league .start-info {
 }
 
 .movies-category .show {
-    margin:3px;
+    top:6px;
+    margin:6px;
     width: 160px;
     height: 216px;
     /* background-color: #514f4f; */
@@ -366,18 +374,31 @@ div.list-container.league .start-info {
     float: left;
     /*  margin-right: 5px;
     margin-left: 5px;*/
-    border: solid 3px transparent;
+   /* border: solid 3px transparent;*/
     border-radius:10px;
+    background-color: #23A6BB;
+    text-align: center;
 }
 
 .movies-category .event-list .show.focused {
-    border: solid 3px #eeeeee !important;
+   /* border: solid 3px #eeeeee !important;*/
+   border: solid 5px transparent!important;
+   top:1px!important;
 }
-
 
 .movies-category .episode img {
     width: 100%;
     height: auto;
+}
+
+.movies-category .event-list .show img{
+    position: relative;
+    bottom:16px;
+}
+
+.movies-category .event-list .show.focused img{
+    width:96%;
+
 }
 
 .movies-category .episode .event-titl {
@@ -1702,12 +1723,12 @@ div.menuelemicon .icon.radioNew {
 }
 #radio .movies-category {
     height:320px;
-    top:447px;
+    top:398px;
 }
 #radio .movies-category .event-list {
     height:320px;
     top:0;
-    left: 227px!important;
+    left: 233px!important;
 }
 
 #radio-control {
