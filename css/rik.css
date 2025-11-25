@@ -352,11 +352,14 @@ div.list-container.league .start-info {
     text-overflow: ellipsis;
     color:white;
         text-shadow: rgb(10, 10, 17) 0px 0px 30px;
+        background: linear-gradient(to top,rgba(10,10,17,.8),rgba(10,10,17,0) 100%);
 }
 
 .show .title{
     top:165px;
     display: block!important;
+    box-shadow: 10px 10px 10px 10px #3b3636;
+    background: rgba(59, 54, 54, 0.5);
 }
 
 .movies-category .event-list .episode.focused {
@@ -396,9 +399,11 @@ div.list-container.league .start-info {
     bottom:10px;
 }
 
+
 .movies-category .event-list .show.focused img{
     bottom:12px;
 }
+
 
 .movies-category .event-list .show.focused img{
     width:96%;
@@ -1328,12 +1333,13 @@ div.menuelemicon .icon.signup {
     background-image: url(../img/hybrid-icons/login.png);
 }
 div.menuelemicon .icon.home {
-    background-image: url(../img/hybrid-icons/home.svg);
+    /*background-image: url(../img/hybrid-icons/home.svg);*/
+    background-image:url(../img/icons/F.png);
 }
 
 div.menuelemicon .icon.srch {
     /*background-position: 0px -260px;*/
-    background-image: url(../img/hybrid-icons/search.svg);
+   background-image: url(../img/hybrid-icons/search.svg);
 }
 
 div.menuelemicon .icon.time {
@@ -1347,18 +1353,21 @@ div.menuelemicon .icon.liveradio {
 
 div.menuelemicon .icon.shows {
     /*background-position: 0px -200px;*/
-    background-image: url(../img/rik_ent.png);
+    /*background-image: url(../img/rik_ent.png);*/
+    background-image: url(../img/icons/PSIHAGOGIA.png);
 }
 
 div.menuelemicon .icon.series {
     /*background-position: 0px -200px;*/
-    background-image: url(../img/rik_series.png);
+    /*background-image: url(../img/rik_series.png);*/
+    background-image: url(../img/icons/SEIRES.png);
 }
 div.menuelemicon .icon.doc {
     background-image: url(../img/hybrid-icons/doc2.svg);
 }
 div.menuelemicon .icon.sports {
-    background-image: url(../img/rik_sports.png);
+    /*background-image: url(../img/rik_sports.png);*/
+    background-image: url(../img/icons/ATHLITIKA.png);
 }
 div.menuelemicon .icon.child {
     background-image: url(../img/rik_child.png);
@@ -1371,6 +1380,7 @@ div.menuelemicon .icon.deltia {
 }
 div.menuelemicon .icon.live {
     background-image: url(../img/hybrid-icons/livered.png);
+
 }
 div.menuelemicon .icon.cinema {
     background-image: url(../img/hybrid-icons/cinema.png);
@@ -1382,7 +1392,8 @@ div.menuelemicon .icon.summer {
 
 div.menuelemicon .icon.news {
     /*background-position: 0px -200px;*/
-    background-image: url(../img/hybrid-icons/news.svg);
+   /* background-image: url(../img/hybrid-icons/news.svg);*/
+    background-image: url(../img/icons/EPIKAIRA.png);
 }
 div.menuelemicon .icon.deltia {
     /*background-position: 0px -200px;*/
