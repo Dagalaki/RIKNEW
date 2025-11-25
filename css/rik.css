@@ -334,7 +334,7 @@ div.list-container.league .start-info {
     float: left;
     margin: 4px;
     border: solid 3px transparent;
-    border-radius:10px;
+    border-radius:2px;
 }
 
 .movies-category .episode .title,  .show .title{
