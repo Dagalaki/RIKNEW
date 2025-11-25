@@ -201,7 +201,7 @@ img{
 .start-info {
     width: 515px;
     height: 218px;
-    top: 100px;
+    top: 25px;
     left: 110px;
     z-index: 1;
 }
@@ -299,7 +299,7 @@ div.list-container.league .start-info {
     float: left;
     height: 290px;
     width: 100%;
-    top: 434px;
+    top: 350px;
     position: relative;
 }
 
