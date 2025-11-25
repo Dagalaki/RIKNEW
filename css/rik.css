@@ -360,7 +360,7 @@ div.list-container.league .start-info {
 }
 
 .movies-category .event-list .episode.focused {
-    border: solid 3px #23A6BB !important;
+    border: solid 5px #23A6BB !important;
     opacity: 1;
 }
 
