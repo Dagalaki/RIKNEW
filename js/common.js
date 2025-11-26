@@ -1,4 +1,4 @@
-var ENABLE_CONSENT = 0, LOG = 0, DAI = false, ENABLE_MIDDLE=1, ENABLE_POSTROLL=1, sonyChrome, NEW_RADIO = 1, ENABLE_LOGIN=1, skaimenu=[];
+var ENABLE_CONSENT = 0, LOG = 0, DAI = false, ENABLE_MIDDLE=1, ENABLE_POSTROLL=1, sonyChrome, NEW_RADIO = 1, ENABLE_LOGIN=1, rikmenu=[];
 var STATE_PLAYING = 1, STATE_STOP = 0, STATE_PAUSE = 2, STATE_CONNECTING = 3, STATE_BUFFERING = 4, STATE_FINISHED = 5, STATE_ERROR = 6;
 var menu=null, keyLists =["home-cont", 'live','news', 'doc' ,'sports', 'shows', 'series', 'deltia', 'culture', 'child'];
 function debug(s) {
@@ -66,7 +66,7 @@ function jsLog(Nachricht, Datei, Zeile) {
 	var date = new Date();
 	//var str = '[TIME: '+ date.getHours() +':'+date.getMinutes() + ']';
 	var str = "";
-	xtt.src = '/err.php?U=SKAIDEBUG&P=jsErr:' + Zeile + '&M=' + escape(str + ' : ' + Nachricht + ':' + agt + ':' + Datei);
+	xtt.src = '/err.php?U=RIKDEBUG&P=jsErr:' + Zeile + '&M=' + escape(str + ' : ' + Nachricht + ':' + agt + ':' + Datei);
 	return true;
 }
 var FORMULA_APP_ID = 4;
@@ -149,7 +149,7 @@ Object.prototype.hasClass = function (className) {
 };
 
 function moves(tit) {
-/*	if (tit == "") return;
+	if (tit == "") return;
 
 	var piwik = new Image;
 	sm = '';
@@ -157,9 +157,10 @@ function moves(tit) {
 		sm = '&uid=' + smarttv_id;
 
 	piwik.src = "http://lookcy.smart-tv-data.com/teletext.php?idsite=4&rec=1&action_name=" + encodeURIComponent(tit) + '&cookie=1&url=' + encodeURIComponent('http://rik.smart-tv-data.com/') + "&s=" + ON_Channel + sm;
-*/
+
 	return true;
 }
+
 
 
 function shortTime(totalSeconds) {
@@ -910,12 +911,7 @@ BaseObject.prototype.onGreen = function () {
 		document.getElementById("log-message").style.display = "block";
 	else
 		document.getElementById("log-message").style.display = "none";
-	/*var o = GLOBALS.focusmgr.getObject("skai");
-	document.getElementsByClassName("sidebar")[0].style.visibility = "hidden";
-            var bbId = 67280;
-            o.loadJson("bigbrother", bbId);
-            //o.createBigBrother();
-            llog(GLOBALS.scenemgr.sceneStack);*/
+	
 	return true;
 
 }
@@ -1637,7 +1633,7 @@ SceneManager.prototype.obtainFocus = function () {
 			GLOBALS.focusmgr.focusObject(o.ktab_idnam, true);
 			return true;
 		}
-		if (last == "skai") {
+		if (last == "rik") {
 			GLOBALS.focusmgr.focusObject(obj.idnam + "-list", true);
 			return true;
 		}
@@ -1762,20 +1758,9 @@ SceneManager.prototype.captureChannelChange = function () {
 		tvbild.innerHTML = '<object id="mybroadcast"  type="video/broadcast"></object>';
 		var dvb = document.getElementById('mybroadcast');
 		if (dvb) {
-			/*
-			dvb.type = 'video/mpeg';
-			dvb.data = 'http://stream.anixe.net/live/skai/mpeg.2ts';
-			dvb.play(1);
-			*/
+			
 			dvb.bindToCurrentChannel();
-			// Get current triplet
-
-			/*
-			 * var ch = dvb.currentChannel;
-			GLOBALS.sid = ch.sid;
-			GLOBALS.tsid = ch.tsid;
-			GLOBALS.onid = ch.onid;
-			*/
+			
 		}
 	} catch (e) {}
 
@@ -1868,7 +1853,7 @@ SceneManager.prototype.baseInit = function (pageid) {
 
 	switch (pageid) {
 		case 46:
-			var e = new Skai("skai");
+			var e = new Rik("rik");
 			if (GLOBALS.action == "mercedes") {
 				moves('Mercedes promo');
 				e.createStream();
@@ -1949,7 +1934,7 @@ SceneManager.prototype.stopBroadcast = function (){
 	try{
 		var broadcast = $("#mybroadcast")[0];
 		debug("Broadcast object found - attempting to stop. Current state:"+broadcast.playState,"yellow");
-		if( broadcast.playState != 3) {
+		if(broadcast && broadcast.playState != 3) {
 			debug("Broadcast object found - not in stopped state","yellow");
 			broadcast.bindToCurrentChannel();
 			debug("Broadcast object found - bound to current channel","yellow");
@@ -3134,8 +3119,6 @@ VideoPlayer.prototype.handleKeyPress = function (keyCode) {
 				case "back":
 					llog("Back Button");
 					if (GLOBALS.action == "mercedes") {
-						//location.href = 'http://skai.smart-tv-data.com/?menu=sidebar';
-						//else location.href = '../?menu=sidebar';
 						break;
 					}
 					this.handleVKBack();
@@ -3151,8 +3134,7 @@ VideoPlayer.prototype.handleKeyPress = function (keyCode) {
 				this.fullScreen();
 			else {
 				if (GLOBALS.action == "mercedes") {
-					//location.href = 'http://skai.smart-tv-data.com/?menu=sidebar';
-					//else location.href = '../?menu=sidebar';
+					
 					break;
 				}
 				this.handleVKBack();
@@ -3245,10 +3227,7 @@ VideoPlayer.prototype.handleVKDown = function () {
 
 
 VideoPlayer.prototype.close = function () {
-	if (GLOBALS.action == "mercedes") {
-		//location.href = 'http://skai.smart-tv-data.com/?menu=sidebar';
-		//else location.href = '../?menu=sidebar';
-	}
+	
 	if (document.getElementById("player-bg-container")) document.getElementById("player-bg-container").style.display = "none";
 	if (document.getElementById("player-container")) document.getElementById("player-container").style.display = "none";
 	if (document.getElementById("subs-container")) document.getElementById("subs-container").style.display = "none";
@@ -4493,35 +4472,11 @@ function initApp() {
 		//     "classname": "bigbrother"
 		// }
 	];
-	if (SHOW_BB) {
-		var info = {
-			"name": "",
-			"image_on": "",
-			"image_off": "",
-			"classname": "bigbrother"
-		};
-		skaimenu.push(info);
-	}
-	if (SHOW_MENU_INFO) {
-		var info = {
-			"name": "Όροι Χρήσης",
-			"image_on": "",
-			"image_off": "",
-			"classname": "info"
-		};
-		skaimenu.push(info);
-	}
+	
 
 	debug('profile: '+ JSON.stringify(profile));
 	try {
-		/*
-		if (document.getElementById('mybroadcast')) {
-			var vid = document.getElementById('mybroadcast');
-			vid.type = 'video/mpeg';
-			vid.data = 'http://stream.anixe.net/live/skai/mpeg.2ts';
-			vid.play(1);
-		}
-		*/
+		
 		document.getElementById('mybroadcast').bindToCurrentChannel();
 		document.getElementById('mybroadcast').stop();
 	} catch (e) {};
@@ -4606,7 +4561,7 @@ function initApp() {
 				"image_off": "",
 				"classname": "signup"
 			};
-			skaimenu.unshift(a);
+			rikmenu.unshift(a);
 			menu.unshift(a);
 		}
 
@@ -4623,13 +4578,7 @@ function initApp() {
 		} else
 			loadScene(pageid);
 
-		if (GLOBALS.dev){
-			/*if(!getCookie('SkaiMsgrId')){
-				GLOBALS.popup = new ChatPopup('popup');
-				GLOBALS.popup.init(document.body, 0, 0);
-				GLOBALS.popup.intro();
-			}*/
-		}
+		
 	});
 
 }

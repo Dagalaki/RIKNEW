@@ -70,7 +70,7 @@ img{
     left: 550px;
 }
 
-.skai-list {
+.rik-list {
     width: 1280px;
     height: 720px;
     top: 0px;
@@ -145,7 +145,7 @@ img{
     height: 169px !important;
 }
 
-.skai-menu {
+.rik-menu {
     width: 760px;
     height: 50px;
     left: 60px;
@@ -155,7 +155,7 @@ img{
 }
 
 
-.skai-menu .menu-item {
+.rik-menu .menu-item {
     position: relative;
     float: left;
     padding: 7px;
@@ -165,7 +165,7 @@ img{
     height: 25px;
 }
 
-.skai-menu .menu-icon {
+.rik-menu .menu-icon {
     position: relative;
     float: left;
     margin-left: 5px;
@@ -175,21 +175,21 @@ img{
     border-radius: 10px;
 }
 
-.skai-menu .menu-item.focused {
+.rik-menu .menu-item.focused {
     background-color: #050553 !important;
     border-right: 2px solid #eeeeee;
     border-left: 2px solid #eeeeee;
 }
 
-.skai-menu .menu-item.active {
+.rik-menu .menu-item.active {
     background-color: rgba(244, 244, 244, 0.25);
 }
 
-.skai-menu .menu-icon.focused {
+.rik-menu .menu-icon.focused {
     background-color: #050553 !important;
 }
 
-.skai-menu .menu-icon.active {
+.rik-menu .menu-icon.active {
     background-color: rgba(244, 244, 244, 0.25);
 }
 
@@ -1773,8 +1773,8 @@ div.menuelemicon .icon.radioNew {
     bottom: 150px;
     left: 590px;
 }
-#radio-control.skairadio_controller.on {
-    background-image: url("../img/radio/skairadio_controllers_play.png");
+#radio-control.rikradio_controller.on {
+    background-image: url("../img/radio/rikradio_controllers_play.png");
 }
 #radio-control.sportfm_controller.on {
     background-image: url("../img/radio/sportfm_controllers_play.png");
@@ -1789,8 +1789,8 @@ div.menuelemicon .icon.radioNew {
     background-image: url("../img/radio/happy_controllers_play.png");
 }
 
-#radio-control.skairadio_controller {
-    background-image: url("../img/radio/skairadio_controllers_pause.png");
+#radio-control.rikradio_controller {
+    background-image: url("../img/radio/rikradio_controllers_pause.png");
 }
 #radio-control.sportfm_controller {
     background-image: url("../img/radio/sportfm_controllers_pause.png");
@@ -2014,7 +2014,7 @@ div.menuelemicon .icon.radioNew {
 .user-div {
 	width: 1280px;
 	height: 720px;
-	background-image: url("../img/skai_hybrid_template_bg.jpg");
+	background-image: url("../img/rik_hybrid_template_bg.jpg");
 }
 .user-container {
 	width: 1280px;
@@ -2394,7 +2394,7 @@ div.right{
     margin: auto;
     left: 50%;
     transform: translateX(-50%);
-    background: url('../img/skaimessengerlogo.png');
+    background: url('../img/rikmessengerlogo.png');
     background-repeat: no-repeat;
     background-size: cover;
     height: 71px;
@@ -2478,7 +2478,7 @@ div.right{
     border-left: solid 2px rgba(0,0,0,0.5);
 }
 div.menuelemicon .icon.msgr {
-    background-image: url("../img/hybrid-icons/skaimessengerlogo_sm.png");
+    background-image: url("../img/hybrid-icons/rikmessengerlogo_sm.png");
     background-size: 85%;
     background-position: left;
 }
