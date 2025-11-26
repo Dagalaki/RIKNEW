@@ -38,7 +38,7 @@ VideoPlayer.prototype.createPlayer = function(){
 			+'<div id="audioButton"><div id="audioButtonText">Audio</div></div>'
 			+'<div id="playText"></div>'
 			+'</div>');
-		//debug("Add player component");
+		debug("Add player OIPF component");
 	}
 
 	//this.createSkip();
