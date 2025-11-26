@@ -4150,7 +4150,7 @@ ul li {
 	font-size: 15px;
 	color: #eeeeee;
 	text-shadow: 2px 2px 2px black;
-	background-color: rgba(0, 0, 0, 0.34);
+	/*background-color: rgba(0, 0, 0, 0.34);*/
 	border-radius: 10px;
 	padding: 10px;
 }
