@@ -2767,6 +2767,8 @@ HorizontalList.prototype.setFocused = function (otherobj, focus) {
 
 	if(focus && this.idnam != "summer-list" && this.idnam !='search-results-list' && this.items.length){
 		var item = this.items[this.focusedId], bg = item.img, sc = getScheduleNext(), live = GLOBALS.focusmgr.getObject("live");
+        llog('[HorizontalList setfocused] item ');
+        llog(item);
 		lastVid = item;
 
 bg = "http://rik.smart-tv-data.com/" + bg;
@@ -2804,6 +2806,7 @@ if(thisparent){
 		if(thisparent.getElementsByClassName("start-info-title")) var titl = thisparent.getElementsByClassName("start-info-title")[0];
         
     }
+    llog("[HorizontalList] setfocused " +item.title);
 		if(this.infoTitle) this.infoTitle.innerHTML = "<strong>" + (item.title) + "</strong>";
 		else if(titl) titl.innerHTML = "<strong>" + (item.title) + "</strong>";
 
@@ -2901,7 +2904,7 @@ if(GLOBALS.PREVIEW){
 	}
 }
 HorizontalList.prototype.animScrollerLeft = function () {
-    if (this.strecke >= this.itemmargin) {
+   /* if (this.strecke >= this.itemmargin) {
         clearTimeout(this.animtimer);
         this.animtimer = false;
         this.strecke = 0;
@@ -2916,14 +2919,15 @@ HorizontalList.prototype.animScrollerLeft = function () {
             me.animScrollerLeft();
         }, 40);
     }
-   /* this.setFocused(this.idnam, true);
+    */
+   this.setFocused(this.idnam, true);
     debug("[HorizontalList animscroller left] focusedId " + this.focusedId);
     this.position = this.position + this.itemmargin;
     this.outer.style.left = this.position + 'px';
-*/
+
 }
 HorizontalList.prototype.animScrollerRight = function () {
-
+/*
     if (this.strecke >= this.itemmargin) {
         clearTimeout(this.animtimer);
         this.animtimer = false;
@@ -2941,12 +2945,12 @@ HorizontalList.prototype.animScrollerRight = function () {
             me.animScrollerRight();
         }, 40);
     }
-    /*
+*/    
     this.setFocused(this.idnam, true);
     debug("[HorizontalList animscroller rigth] focusedId " + this.focusedId);
     this.position = this.initPosition - this.itemmargin * this.focusedId;
     this.outer.style.left = this.position + 'px';
-*/
+
 }
 
 function goRed(url) {
