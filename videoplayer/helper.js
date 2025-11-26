@@ -117,8 +117,7 @@ function prepareVideoStart(item){
 		return;
 	if(!GLOBALS.vplayer ) GLOBALS.vplayer = initVideoPlayer();
 
-	$("#extra-btns").html('<div class="extra-btn" id="back-btn"><span>Back</span><div class="picon"></div></div>'
-		+ '<div class="piconbg extra-btn" id="extra3"><div class="picon" id="extra-btn3"></div></div>');
+	$("#extra-btns").html('<div class="extra-btn" id="back-btn"><span>Back</span><div class="picon"></div></div>';
 	$('.thumbnail').attr("style", "none");
 
 	if(GLOBALS.vplayer.video == null){
