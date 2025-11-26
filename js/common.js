@@ -149,8 +149,7 @@ Object.prototype.hasClass = function (className) {
 };
 
 function moves(tit) {
-	tit = 'RIKNEW-' +tit;
-
+	
 	debug("[RIK moves ] " + tit);
 
 	if (tit == "") return;
