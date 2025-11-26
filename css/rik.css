@@ -346,7 +346,7 @@ div.list-container.league .start-info {
     width: inherit;
     top: 86px;
     padding-top: 7px;
-    height: 53px;
+    height: 70px;
     font-weight: bold;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -356,7 +356,7 @@ div.list-container.league .start-info {
 }
 
 .show .title{
-    top:165px;
+    top:145px;
     display: block!important;
     box-shadow: 10px 10px 10px 10px #3b3636;
     background: rgba(59, 54, 54, 0.5);
