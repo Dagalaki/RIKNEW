@@ -150,7 +150,7 @@ Object.prototype.hasClass = function (className) {
 
 function moves(tit) {
 
-	llog("[RIK moves ] " + tit);
+	debug("[RIK moves ] " + tit);
 
 	if (tit == "") return;
 
