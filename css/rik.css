@@ -1441,6 +1441,9 @@ div.menuelemicon .icon.radioNew {
 #appscreen.v2 .start-info {
     left: 175px;
     height: 340px;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    border-radius: 10px;
 }
 
 #appscreen.v2 .start-info.epinfo {

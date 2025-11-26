@@ -3170,6 +3170,11 @@ HorizontalList.prototype.handleKeyPress = function (keyCode) {
 				this.animScrollerLeft();
 			break;
 		case VK_ENTER:
+
+
+
+
+
             llog(this.listType+' '+ this.idnam);
 			debug(this.listType+' '+ this.idnam);
 			var live = GLOBALS.focusmgr.getObject("live"), item = this.items[this.focusedId];
@@ -3186,6 +3191,9 @@ HorizontalList.prototype.handleKeyPress = function (keyCode) {
 			}
             llog("horizontal list VK_ENTER item");
             llog(item);
+
+             moves(this.listType+"/" + (item.title +'/'+ item.dt).replace(/\//g,"-")+"/");
+                    moves("videoplayer");
             
 			if (item.mp4 || item.episode || (this.listType && typeof item.media_item_link != 'undefined') || ((this.idnam == 'sports-select' || this.idnam.indexOf('home-list') > 0) || item.live)) {
 				if (GLOBALS.dev && item.id == 8) {
