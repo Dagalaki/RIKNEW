@@ -10,12 +10,12 @@
 
 
 function VideoPlayer(element_id, profile, width, height){
-	debug("VideoPlayer - Constructor");
+	debug("VideoPlayer OIPF- Constructor");
 	
 	// Call super class constructor
 	VideoPlayerBasic.call(this, element_id, profile, width, height);
 	this.timeInMilliseconds = true;
-	debug("Initialized " + this.element_id);
+//	debug("Initialized " + this.element_id);
 }
 
 VideoPlayer.prototype.createPlayer = function(){
@@ -38,7 +38,7 @@ VideoPlayer.prototype.createPlayer = function(){
 			+'<div id="audioButton"><div id="audioButtonText">Audio</div></div>'
 			+'<div id="playText"></div>'
 			+'</div>');
-		debug("Add player component");
+		//debug("Add player component");
 	}
 
 	//this.createSkip();
@@ -63,16 +63,16 @@ VideoPlayer.prototype.createPlayer = function(){
 };
 
 VideoPlayer.prototype.enableSubtitles = function( next ) {
-	debug("enableSubtitles("+ next +")");
+	//debug("enableSubtitles("+ next +")");
 	try{
 		if( next ){
-			debug("current track: " + this.subtitleTrack  );
+			//debug("current track: " + this.subtitleTrack  );
 			if(!this.subtitleTrack || this.subtitleTrack == undefined || this.subtitleTrack == NaN){
 				this.subtitleTrack = 0;
 			} else {
 				this.subtitleTrack++;
 			}			
-			debug("switched track: " + this.subtitleTrack  );
+			//debug("switched track: " + this.subtitleTrack  );
 		}
 		switch ( this.video.playState) {
 			case 1:
@@ -87,17 +87,17 @@ VideoPlayer.prototype.enableSubtitles = function( next ) {
 				if( this.subtitleTrack >= avSubtitleComponent.length){
 					this.subtitleTrack = 0;
 				}
-				debug("Video has " + avSubtitleComponent.length + " subtitle tracks. selected track is: " + this.subtitleTrack );
+				//debug("Video has " + avSubtitleComponent.length + " subtitle tracks. selected track is: " + this.subtitleTrack );
 				for (var i=0; i<avSubtitleComponent.length; i++){
 					if ( this.subtitleTrack == i ) {
 						showInfo("select subtitleTrack " + i);
-						debug("select subtitleTrack " + i);
+						//debug("select subtitleTrack " + i);
 						this.video.selectComponent(avSubtitleComponent[i]);
-						debug("READY");
+						//debug("READY");
 					} else {
-						debug("unselect subtitleTrack " + i);
+						//debug("unselect subtitleTrack " + i);
 						this.video.unselectComponent(avSubtitleComponent[i]);
-						debug("READY");
+						//debug("READY");
 					}
 				}
 				
@@ -114,7 +114,7 @@ VideoPlayer.prototype.enableSubtitles = function( next ) {
 };
 
 VideoPlayer.prototype.changeAVcomponent = function( component ) {
-	debug("changeAVcomponent("+ component +")");
+	//debug("changeAVcomponent("+ component +")");
 	var self = this;
 	if(typeof this.subsmenu == "undefined") return ;
 	if (self.video.playState == 1 && component == self.AVCOMPONENTS.SUBTITLE) {
@@ -126,13 +126,13 @@ VideoPlayer.prototype.changeAVcomponent = function( component ) {
 	}
 	try{
 		var track = ( component == self.AVCOMPONENTS.AUDIO? self.audioTrack : self.subtitleTrack );
-		debug("current track: " + track  );
+		//debug("current track: " + track  );
 		if( track == undefined || track == NaN || track === false ){
-			debug("Change to 0"  );
+			//debug("Change to 0"  );
 			track = 0;
 		}
 		track++;
-		debug("switched track: " + track );
+		//debug("switched track: " + track );
 		switch ( this.video.playState) {
 			case 1:
 				// components can be accessed only in PLAYING state
@@ -149,26 +149,26 @@ VideoPlayer.prototype.changeAVcomponent = function( component ) {
 				
 				if( component == self.AVCOMPONENTS.AUDIO ){
 					self.audioTrack = track;
-					debug("Updated audioTrack value to: " + self.audioTrack);
+					//debug("Updated audioTrack value to: " + self.audioTrack);
 				}
 				else{
 					self.subtitleTrack = track;
-					debug("Updated subtitleTrack value to: " + self.subtitleTrack);
+					//debug("Updated subtitleTrack value to: " + self.subtitleTrack);
 				}
 				
-				debug("Video has " + avComponent.length + " "+ ["video","audio","subtitle"][component] +" tracks. selected track is: " + track );
+				//debug("Video has " + avComponent.length + " "+ ["video","audio","subtitle"][component] +" tracks. selected track is: " + track );
 				
 				// unselect all
 				for (var i=0; i<avComponent.length; i++){
-					debug( "track " + i + ": " + avComponent[i].language );
+					//debug( "track " + i + ": " + avComponent[i].language );
 					this.video.unselectComponent(avComponent[i]);
 				}
 				
 				showInfo("select track " + track + "("+avComponent[track].language+")");
-				debug("select track " + track);
+			//	debug("select track " + track);
 				this.video.selectComponent(avComponent[track]);
-				debug("READY");
-				debug( avComponent[track].language, avComponent[track].label || "label undefined" );
+			//	debug("READY");
+			//	debug( avComponent[track].language, avComponent[track].label || "label undefined" );
 				
 			break;
 			case 6:
@@ -190,8 +190,8 @@ VideoPlayer.prototype.createInternalSubtitlesStructure = function (ret){
 	if(this.buckets.length > 0) {
 		this.bucketId = 0;
 	}else{
-		debug("Subtitles BUCKET EMPTY");
-		llog("Subtitles BUCKET EMPTY");
+		//debug("Subtitles BUCKET EMPTY");
+		//llog("Subtitles BUCKET EMPTY");
 	}
 
 	//GLOBALS.focusmgr.focusObject("videoplayer");
@@ -199,12 +199,12 @@ VideoPlayer.prototype.createInternalSubtitlesStructure = function (ret){
 }
 
 VideoPlayer.prototype.loadSubtitles = function (){
-	debug("load subtitles "+this.srtFile);
-	llog("[loadSubtitles] "+this.srtFile);
+	//debug("load subtitles "+this.srtFile);
+	//llog("[loadSubtitles] "+this.srtFile);
 	var self = this, url = "videoplayer/parseSrt.php?srt_file="+escape(this.srtFile);
 	if (GLOBALS.dev)
 		url = "http://rik.smart-tv-data.com/videoplayer/parseSrt.php?srt_file="+escape(this.srtFile);
-	llog("[loadSubtitles] "+url);
+	//llog("[loadSubtitles] "+url);
 	this.req = createHttpRequest(url, function(ret) {
 		self.req = null;
 		self.createInternalSubtitlesStructure(ret);
@@ -256,7 +256,7 @@ VideoPlayer.prototype.setURL = function(url){
 		GLOBALS.focusmgr.focusObject(null);
 	}
 	url = url.replace("${GUID}", uuidv4());
-	debug("setURL("+url+")");
+	//debug("setURL("+url+")");
 	var type = "application/dash+xml", ag = navigator.userAgent.toUpperCase();
 	
 	if( url.match(/mp4$/) ){
@@ -291,7 +291,7 @@ VideoPlayer.prototype.checkAds = function(){
 				$("#player").addClass("hide");
 				debug('call midroll', 'yellow');
 				if(typeof middlerollVideo === "undefined"){
-					debug("middlerollVideo is undefined");
+					//debug("middlerollVideo is undefined");
 					return;
 				}
 
@@ -301,9 +301,9 @@ VideoPlayer.prototype.checkAds = function(){
 				adBreak.played = true;
 			}else if (!adBreak.played && adBreak.position == "preroll"){
 				$("#player").addClass("hide");
-				debug('call preroll', 'yellow');
+				//debug('call preroll', 'yellow');
 				if(typeof prerollVideo === "undefined") {
-					debug("prerollVideo is undefined");
+					//debug("prerollVideo is undefined");
 					return;
 				}
 				self.todo = self.currentItem;
@@ -316,7 +316,7 @@ VideoPlayer.prototype.checkAds = function(){
 };
 
 VideoPlayer.prototype.clearLicenseRequest = function(callback){
-	debug("Clear DRM License, time: "+getYMDHMS(null));
+	//debug("Clear DRM License, time: "+getYMDHMS(null));
 	
 	// if drm object exists set an empty acquisition
 	this.oipfDrm = $("#oipfDrm")[0];	
@@ -396,7 +396,7 @@ VideoPlayer.prototype.clearLicenseRequest = function(callback){
 
 VideoPlayer.prototype.setSubtitles2 = function( subtitles ){
 	if( subtitles ){
-		debug("setSubtitles()");
+		//debug("setSubtitles()");
 		this.subtitles = subtitles;
 	}
 	else{
@@ -651,14 +651,14 @@ VideoPlayer.prototype.startVideo = function(isLive, ntCall) {
 		var position = null; //this.watched.get( self.videoid );
 		if( !self.live && position ){
 			self.resumePosition = position.position;
-			debug("resumePosition is " + self.resumePosition);
+			//debug("resumePosition is " + self.resumePosition);
 			self.whenstart = function(){
 				self.pause();
-				debug("video paused by resume dialog in whenstart function");
+			//	debug("video paused by resume dialog in whenstart function");
 				showDialog("Resume","Do you want to resume video at position " + toTime( self.resumePosition ) , ["Yes", "No, Start over"], function( val ){
 					if( val == 0 ){
 						self.whenstart = function(){
-							debug("Seek to resume and play " + self.resumePosition * 1000);
+							//debug("Seek to resume and play " + self.resumePosition * 1000);
 							self.video.seek( self.resumePosition * 1000 );
 							self.whenstart = null;
 							self.resumePosition = 0;
@@ -695,7 +695,7 @@ VideoPlayer.prototype.startVideo = function(isLive, ntCall) {
 				if(!vid) return;
 				sendSmid(self, vid.playState, 0);
 			} else {
-				debug('clear smidTimer');
+				//debug('clear smidTimer');
 				clearInterval(self.smidTimer);
 			}
 		}, 30000);
@@ -733,9 +733,9 @@ VideoPlayer.prototype.stop = function(){
 		//self.skipContainer.style.display = 'none';
 		//self.skipTimer2.style.display = 'none';
 		self.video.stop();
-		debug( "video.stop succeed" );
+		//debug( "video.stop succeed" );
 		self.clearVideo();
-		debug( "clearVideo succeed" );
+	//	debug( "clearVideo succeed" );
 		self.resetProgressBar();
 		GLOBALS.scenemgr.stopBroadcast();
 		if (!self.onAdBreak) {
@@ -788,7 +788,7 @@ VideoPlayer.prototype.clearVideo = function(){
 			}
 			$( "#video2" ).remove(); // clear from dom
 			this.video = null;
-			debug("video object stopped, removed from dom and VideoPlayerClass");
+			//debug("video object stopped, removed from dom and VideoPlayerClass");
 		}
 		if(!GLOBALS.brtyp){
 			if( $("#mybroadcast")[0] ){
@@ -830,7 +830,7 @@ VideoPlayer.prototype.doPlayStateChange = function(){
 	}
 	switch (self.video.playState) {
 		case 0: // stopped
-			debug("stopped");
+			//debug("stopped");
 			clearInterval(self.adTimer);
 			self.adTimer = null;
 			clearInterval(GLOBALS.lbannerTimer);
@@ -842,10 +842,10 @@ VideoPlayer.prototype.doPlayStateChange = function(){
 			Monitor.videoEnded(debug);
 			break;
 		case 1: // playing
-			debug("playing");
-			llog(self.onAdBreak);
+			//debug("playing");
+		//	llog(self.onAdBreak);
 			if (self.onAdBreak) {
-				llog("enable skip timer!");
+				//llog("enable skip timer!");
 				if (0)
 				self.enableSkipTimer = setInterval(function(){
 					if (!self.video) return;
@@ -877,7 +877,7 @@ VideoPlayer.prototype.doPlayStateChange = function(){
 
 			if(self.middleRollTime && self.currentItem.title != "Ad"){
 				if (!self.live) {
-					debug("go to middle roll time: " + self.middleRollTime);
+					//debug("go to middle roll time: " + self.middleRollTime);
 					self.video.seek(self.middleRollTime * 1000)
 				}
 				self.middleRollTime = 0;
@@ -885,7 +885,7 @@ VideoPlayer.prototype.doPlayStateChange = function(){
 			}
 
 			if( dialog.open ){
-				debug("pause on dialog");
+				//debug("pause on dialog");
 				self.pause();
 				return;
 			}
@@ -961,7 +961,7 @@ VideoPlayer.prototype.doPlayStateChange = function(){
 			Monitor.videoBuffering();
 			break;
 		case 5: // finished
-			debug("finished");
+			//debug("finished");
 			if (self.onAdBreak) {
 				self.onAdBreak = false;
 				if (self.todo) {
@@ -1083,18 +1083,18 @@ VideoPlayer.prototype.syncdata = function (ms, bucketId){
 
 
 VideoPlayer.prototype.changeAVcomponent = function( component ) {
-	debug("changeAVcomponent("+ component +")");
+	//debug("changeAVcomponent("+ component +")");
 	var self = this;
 	try{
 		var track = ( component == self.AVCOMPONENTS.AUDIO? self.audioTrack : self.subtitleTrack );
-		debug("current track: " + track  );
+		//debug("current track: " + track  );
 		if( track == undefined || track == NaN || track === false ){
 			debug("Change to 0"  );
 			track = 0;
 		}
 		track++;
 		
-		debug("switched track: " + track );
+		//debug("switched track: " + track );
 		
 		switch ( this.video.playState) {
 			case 1:
@@ -1112,14 +1112,14 @@ VideoPlayer.prototype.changeAVcomponent = function( component ) {
 				
 				if( component == self.AVCOMPONENTS.AUDIO ){
 					self.audioTrack = track;
-					debug("Updated audioTrack value to: " + self.audioTrack);
+					//debug("Updated audioTrack value to: " + self.audioTrack);
 				}
 				else{
 					self.subtitleTrack = track;
-					debug("Updated subtitleTrack value to: " + self.subtitleTrack);
+					//debug("Updated subtitleTrack value to: " + self.subtitleTrack);
 				}
 				
-				debug("Video has " + avComponent.length + " "+ ["video","audio","subtitle"][component] +" tracks. selected track is: " + track );
+				//debug("Video has " + avComponent.length + " "+ ["video","audio","subtitle"][component] +" tracks. selected track is: " + track );
 				
 				// unselect all
 				for (var i=0; i<avComponent.length; i++){
@@ -1128,10 +1128,10 @@ VideoPlayer.prototype.changeAVcomponent = function( component ) {
 				}
 				
 				showInfo("select track " + track + "("+avComponent[track].language+")");
-				debug("select track " + track);
+				//debug("select track " + track);
 				this.video.selectComponent(avComponent[track]);
-				debug("READY");
-				debug( avComponent[track].language, avComponent[track].label || "label undefined" );
+				//debug("READY");
+				//debug( avComponent[track].language, avComponent[track].label || "label undefined" );
 				
 			break;
 			case 6:
@@ -1149,13 +1149,13 @@ VideoPlayer.prototype.enableSubtitles = function( next ) {
 	llog("enableSubtitles("+ next +")");
 	try{
 		if( next ){
-			debug("current track: " + this.subtitleTrack  );
+			//debug("current track: " + this.subtitleTrack  );
 			if(!this.subtitleTrack || this.subtitleTrack == undefined || this.subtitleTrack == NaN){
 				this.subtitleTrack = 0;
 			} else {
 				this.subtitleTrack++;
 			}			
-			debug("switched track: " + this.subtitleTrack  );
+			//debug("switched track: " + this.subtitleTrack  );
 		}
 		switch ( this.video.playState) {
 			case 1:
@@ -1170,17 +1170,17 @@ VideoPlayer.prototype.enableSubtitles = function( next ) {
 				if( this.subtitleTrack >= avSubtitleComponent.length){
 					this.subtitleTrack = 0;
 				}
-				debug("Video has " + avSubtitleComponent.length + " subtitle tracks. selected track is: " + this.subtitleTrack );
+				//debug("Video has " + avSubtitleComponent.length + " subtitle tracks. selected track is: " + this.subtitleTrack );
 				for (var i=0; i<avSubtitleComponent.length; i++){
 					if ( this.subtitleTrack == i ) {
 						showInfo("select subtitleTrack " + i);
-						debug("select subtitleTrack " + i);
+						//debug("select subtitleTrack " + i);
 						this.video.selectComponent(avSubtitleComponent[i]);
-						debug("READY");
+					//	debug("READY");
 					} else {
-						debug("unselect subtitleTrack " + i);
+					//	debug("unselect subtitleTrack " + i);
 						this.video.unselectComponent(avSubtitleComponent[i]);
-						debug("READY");
+					//	debug("READY");
 					}
 				}
 				
