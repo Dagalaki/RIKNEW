@@ -46,7 +46,7 @@ else{
 		
 		if( /*!$useMinified && */substr( $file, -2 ) == "js" ){
 			//echo "<script src='$fileversion' type='text/javascript'></script>\n";
-			echo "<script src='$fileversion?v='".time()." type='application/javascript'></script>\n";
+			echo "<script src='$fileversion?v=2' type='application/javascript'></script>\n";
 		}else if( !$useMinifiedCss && substr( $file, -3 ) == "css" ){
 			echo "<link href='$fileversion' rel='stylesheet' type='text/css'/>\n";
 		}

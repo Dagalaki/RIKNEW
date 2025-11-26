@@ -3102,6 +3102,7 @@ HorizontalList.prototype.animScrollerLeft = function () {
         }, 40);
     }*/
     this.setFocused(this.idnam, true);
+    debug("[HorizontalList animscroller left] focusedId " + this.focusedId);
     this.position = this.position + this.itemmargin;
     this.outer.style.left = this.position + 'px';
 

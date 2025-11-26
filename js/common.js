@@ -185,11 +185,11 @@ function cleardebug() {
 	}
 }
 function devmode2(msg, obj) {
-	if (GLOBALS.dev) {
+	//if (GLOBALS.dev) {
 		var a = document.getElementById("log-message").innerHTML.split('<br');
 		if (a.length > 30) document.getElementById("log-message").innerHTML = "";
 		document.getElementById("log-message").innerHTML += msg + "<br/>";
-	}
+	//}
 }
 
 function llog(msg, obj) {
