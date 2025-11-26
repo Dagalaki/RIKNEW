@@ -2901,7 +2901,7 @@ if(GLOBALS.PREVIEW){
 	}
 }
 HorizontalList.prototype.animScrollerLeft = function () {
-    /*if (this.strecke >= this.itemmargin) {
+    if (this.strecke >= this.itemmargin) {
         clearTimeout(this.animtimer);
         this.animtimer = false;
         this.strecke = 0;
@@ -2915,16 +2915,16 @@ HorizontalList.prototype.animScrollerLeft = function () {
         this.animtimer = setTimeout(function () {
             me.animScrollerLeft();
         }, 40);
-    }*/
-    this.setFocused(this.idnam, true);
+    }
+   /* this.setFocused(this.idnam, true);
     debug("[HorizontalList animscroller left] focusedId " + this.focusedId);
     this.position = this.position + this.itemmargin;
     this.outer.style.left = this.position + 'px';
-
+*/
 }
 HorizontalList.prototype.animScrollerRight = function () {
 
-    /*if (this.strecke >= this.itemmargin) {
+    if (this.strecke >= this.itemmargin) {
         clearTimeout(this.animtimer);
         this.animtimer = false;
         this.strecke = 0;
@@ -2940,11 +2940,13 @@ HorizontalList.prototype.animScrollerRight = function () {
         this.animtimer = setTimeout(function () {
             me.animScrollerRight();
         }, 40);
-    }*/
+    }
+    /*
     this.setFocused(this.idnam, true);
     debug("[HorizontalList animscroller rigth] focusedId " + this.focusedId);
     this.position = this.initPosition - this.itemmargin * this.focusedId;
     this.outer.style.left = this.position + 'px';
+*/
 }
 
 function goRed(url) {
