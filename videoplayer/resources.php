@@ -25,10 +25,10 @@ if( isset( $profileResources ) ){
 		$resources[] = "videoplayer/videoplayer_mse-eme.js";
 	}
 	else if( $profileResources == "html5" ){
-		$resources[] = "videoplayer/videoplayer_html5.js?v=" . time();
+		$resources[] = "videoplayer/videoplayer_html5.js";
 	}
 	else if( $profileResources == "oipf" ){
-		$resources[] = "videoplayer/videoplayer_oipf.js?v=" . time();
+		$resources[] = "videoplayer/videoplayer_oipf.js";
 	}
 }
 else{
@@ -46,7 +46,7 @@ else{
 		
 		if( /*!$useMinified && */substr( $file, -2 ) == "js" ){
 			//echo "<script src='$fileversion' type='text/javascript'></script>\n";
-			echo "<script src='$fileversion' type='application/javascript'></script>\n";
+			echo "<script src='$fileversion?v='".time()." type='application/javascript'></script>\n";
 		}else if( !$useMinifiedCss && substr( $file, -3 ) == "css" ){
 			echo "<link href='$fileversion' rel='stylesheet' type='text/css'/>\n";
 		}
