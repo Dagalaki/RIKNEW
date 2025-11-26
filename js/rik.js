@@ -1098,6 +1098,9 @@ SubMenu.prototype.handleKeyPress = function (keycode) {
             this.setFocused(this.idnam, true);
             break;
         case VK_ENTER:
+
+            moves(activeCont.idnam);
+            
             var o = GLOBALS.focusmgr.getObject("side-bar");
             o.close();
             this.activeId = this.focusedId;

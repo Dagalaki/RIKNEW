@@ -149,6 +149,9 @@ Object.prototype.hasClass = function (className) {
 };
 
 function moves(tit) {
+
+	llog("[RIK moves ] " + tit);
+
 	if (tit == "") return;
 
 	var piwik = new Image;

@@ -199,7 +199,7 @@ img{
 }
 
 .start-info {
-    width: 560px;
+    width: 620px;
     height: 218px;
     top: 25px;
     left: 110px;
@@ -1440,8 +1440,8 @@ div.menuelemicon .icon.radioNew {
 
 #appscreen.v2 .start-info {
     left: 175px;
-    height: 300px;
-    background: rgba(255, 255, 255, 0.5);
+    height: 316px;
+    background: rgba(0,0,0,0.3)
     padding: 10px;
     border-radius: 10px;
 }
