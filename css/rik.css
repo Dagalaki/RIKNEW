@@ -232,8 +232,8 @@ div.list-container.league .start-info {
 .start-info-data {
     position: relative;
     font-size: 20px;
-    color: #eeeeee;
-    text-shadow: 2px 2px 2px black;
+    color: #ffffff;
+    text-shadow: 7px 7px 7px black;
     /*background-color: rgba(0, 0, 0, 0.5);*/
     border-radius: 10px;
     padding: 20px 0;
