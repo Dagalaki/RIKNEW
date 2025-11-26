@@ -25,10 +25,10 @@ if( isset( $profileResources ) ){
 		$resources[] = "videoplayer/videoplayer_mse-eme.js";
 	}
 	else if( $profileResources == "html5" ){
-		$resources[] = "videoplayer/videoplayer_html5.js?v=2";
+		$resources[] = "videoplayer/videoplayer_html5.js";
 	}
 	else if( $profileResources == "oipf" ){
-		$resources[] = "videoplayer/videoplayer_oipf.js?v=2";
+		$resources[] = "videoplayer/videoplayer_oipf.js";
 	}
 }
 else{
