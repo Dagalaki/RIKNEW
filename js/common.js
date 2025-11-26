@@ -253,7 +253,7 @@ var GLOBALS = {
 	"adLoop": false,
 	"middleTimer": null,
 	"adTimer": null,
-	"ui" : ui,
+	"ui" : 2,
 	"PREVIEW": false,
 	"keyeventlistener": function (e) {
 

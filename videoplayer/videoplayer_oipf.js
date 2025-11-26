@@ -32,7 +32,6 @@ VideoPlayer.prototype.createPlayer = function(){
 			+'<div id="pff"></div>'
 			+'<div id="extra-btns">'
 			+'<div class="extra-btn" id="back-btn"><span>Back</span><div class="picon"></div></div>'
-			/*+'<div class="piconbg extra-btn" id="extra3"><div class="picon" id="extra-btn3"></div></div>'*/
 			+'</div>'
 			+'<div id="subtitleButton"><div id="subtitleButtonText">Subtitles</div></div>'
 			+'<div id="audioButton"><div id="audioButtonText">Audio</div></div>'
