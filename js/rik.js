@@ -831,7 +831,7 @@ SubMenu.prototype.init = function (parent, xpos, ypos) {
 	this.register();
 	this.buttons = [];
     if(NEW_RADIO) this.seperator = 9;
-	this.outer = createClassDiv(0, 45, "outer");
+	this.outer = createClassDiv(0, 14, "outer");
 	this.elem.appendChild(this.outer);
 
 	for (var i = 0; i < this.submenu.length; i++) {
@@ -1100,7 +1100,7 @@ SubMenu.prototype.handleKeyPress = function (keycode) {
         case VK_ENTER:
 
             moves(activeCont.idnam);
-            
+
             var o = GLOBALS.focusmgr.getObject("side-bar");
             o.close();
             this.activeId = this.focusedId;
@@ -3195,7 +3195,7 @@ HorizontalList.prototype.handleKeyPress = function (keyCode) {
             llog("horizontal list VK_ENTER item");
             llog(item);
 
-             moves(this.listType+"/" + (item.title +'/'+ item.dt).replace(/\//g,"-")+"/");
+             moves(item.category+"/" + (item.title +'/'+ item.dt).replace(/\//g,"-")+"/");
                     moves("videoplayer");
             
 			if (item.mp4 || item.episode || (this.listType && typeof item.media_item_link != 'undefined') || ((this.idnam == 'sports-select' || this.idnam.indexOf('home-list') > 0) || item.live)) {
