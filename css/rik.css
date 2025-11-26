@@ -215,11 +215,11 @@ div.list-container.league .start-info {
 
 .start-info-title {
     position: relative;
-    font-size: 24px;
+    font-size: 30px;
     font-weight: bold;
     color: #eeeeee;
    /* text-shadow: 7px 7px 7px black;*/
-   text-shadow: 2px 2px black;
+   text-shadow: 5px 5px black;
     top:96px;
 }
 
@@ -232,12 +232,12 @@ div.list-container.league .start-info {
 
 .start-info-data {
     position: relative;
-    font-size: 20px;
+    font-size: 24px;
     color: #ffffff;
     font-weight:bold;
     /*text-shadow: 7px 7px 7px black;*/
     /*background-color: rgba(0, 0, 0, 0.5);*/
-    text-shadow: 2px 2px black;
+    text-shadow: 5px 5px black;
     border-radius: 10px;
     padding: 20px 0;
     position: absolute !important;
