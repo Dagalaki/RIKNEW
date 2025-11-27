@@ -229,6 +229,9 @@ div.list-container.league .start-info {
 }
 
 
+#episodes .start-info-data {
+    top:131px;
+}
 
 .start-info-data {
     position: relative;
@@ -241,7 +244,7 @@ div.list-container.league .start-info {
     border-radius: 10px;
     padding: 20px 0;
     position: absolute !important;
-    top: 104px !important;
+    top: 104px ;
 }
 #bg-logo {
 	position: absolute;
