@@ -1781,8 +1781,14 @@ div.menuelemicon .icon.radioNew {
     background-size: contain;
     bottom: 150px;
     left: 590px;
-    background-image: url("../img/radio/skairadio_controllers_play.png");
+     background-image: url("../img/radio/skairadio_controllers_pause.png");
+
 }
+
+#radio-control.on {
+     background-image: url("../img/radio/skairadio_controllers_play.png");
+}
+
 #radio-control.rikradio_controller.on {
     background-image: url("../img/radio/rikradio_controllers_play.png");
 }
