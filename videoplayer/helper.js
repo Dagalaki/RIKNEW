@@ -44,7 +44,7 @@ SceneManager.prototype.initVPlayerSession = function( title, url, titleHeader, s
 	}
 	var me = this, live = false;
 
-	if (url.indexOf('.2ts') > 0 || url.indexOf('.m3u8') > 0 )
+	if (url.indexOf('.2ts') > 0 /*|| url.indexOf('.m3u8') > 0 */)
 		live = true;
 
 	GLOBALS.vplayer.todo = GLOBALS.vplayer.currentItem;
