@@ -44,7 +44,7 @@ SceneManager.prototype.initVPlayerSession = function( title, url, titleHeader, s
 	}
 	var me = this, live = false;
 
-	if (url.indexOf('.2ts') > 0 /*|| url.indexOf('.m3u8') > 0 */)
+	if (url.indexOf('.2ts') > 0 || url.indexOf('.m3u8') > 0)
 		live = true;
 
 	GLOBALS.vplayer.todo = GLOBALS.vplayer.currentItem;
@@ -117,7 +117,7 @@ function prepareVideoStart(item){
 		return;
 	if(!GLOBALS.vplayer ) GLOBALS.vplayer = initVideoPlayer();
 
-	$("#extra-btns").html('<div class="extra-btn" id="back-btn"><span>Back</span><div class="picon"></div></div>';
+	$("#extra-btns").html('<div class="extra-btn" id="back-btn"><span>Back</span><div class="picon"></div></div>');
 	$('.thumbnail').attr("style", "none");
 
 	if(GLOBALS.vplayer.video == null){
