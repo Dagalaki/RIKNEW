@@ -60,7 +60,20 @@
                     "media_item_title": "RikS",
                     "category": "LIVE" 
                 }
-                
+                ,
+                 {
+                    "id": 0, 
+                    "title": "RikRadio",
+                    "media_item_link": "http://l3.cloudskep.com/cybcsat/abr/playlist.m3u8",
+                    "descr": "RikRadio",
+                    "short_descr" : "",
+                    "subtitle": "",
+                    "img": "img/rikradio.png",
+                    "bg": "",
+                    "show_title": "RikRadio",
+                    "media_item_title": "RikRadio",
+                    "category": "RADIO" 
+                }
             ]
 
         }

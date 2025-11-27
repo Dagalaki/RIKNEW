@@ -3870,7 +3870,7 @@ Radio.prototype.init = function (parent, xpos, ypos) {
 
 	if(NEW_RADIO){
 		item = liveRadioElements[this.radioIndex];
-		this.source = item.media_item_link;
+		this.source = item.lnk;
 		bg = item.bg;
 		e.style.backgroundRepeat = 'no-repeat';
 		e.style.backgroundPosition = 'center';
@@ -3909,7 +3909,9 @@ Radio.prototype.init = function (parent, xpos, ypos) {
 			moves(path);
 			var div = document.getElementById("player-container");
 
+
 			if (div) {
+
                 /* HbbTV does not make a distinction between video and audio in the object player. Changing type="audio/mpeg" to "video/mpeg" fixed it */
 				var inner = '<object type="video/mpeg" id="video-radio" data="' + this.source + '"></object>';
 				div.innerHTML = inner;
@@ -4150,7 +4152,7 @@ Radio.prototype.handleKeyPress = function (keyCode) {
 			this.pause();
 			break;
 		case VK_BACK:
-			document.getElementById("radio-control").style.display = "none";
+			if(document.getElementById("radio-control")) document.getElementById("radio-control").style.display = "none";
 			var vid = document.getElementById('video-radio');
 			if (vid) {
 				try {
