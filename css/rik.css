@@ -342,6 +342,14 @@ div.list-container.league .start-info {
     border: solid 3px transparent;
     border-radius:2px;
 }
+#radio .movies-category .episode{
+    border-radius:80px;
+}
+
+#live .movies-category .show {
+     border-radius:80px;
+     height:156px;
+}
 
 .movies-category .episode .title,  .show .title{
     font-size: 20px;
