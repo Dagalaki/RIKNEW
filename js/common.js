@@ -149,8 +149,8 @@ Object.prototype.hasClass = function (className) {
 };
 
 function moves(tit) {
-	
-	debug("[RIK moves ] " + tit);
+
+	llog("[RIK moves ] " + tit);
 
 	if (tit == "") return;
 
@@ -4359,7 +4359,7 @@ function initApp() {
 	}
 
 	var pageid = 46;
-	moves("Άνοιγμα Εφαρμογής");
+	moves("Πατήθηκε το κόκκινο κουμπί.");
 	var req = createHttpRequest('runapp.php', function (ret) {
 		req = null;
 	});

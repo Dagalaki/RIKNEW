@@ -1099,7 +1099,7 @@ SubMenu.prototype.handleKeyPress = function (keycode) {
             break;
         case VK_ENTER:
 
-            moves(activeCont.idnam);
+           // moves(activeCont.idnam);
 
             var o = GLOBALS.focusmgr.getObject("side-bar");
             o.close();
@@ -1152,7 +1152,7 @@ SubMenu.prototype.handleRequest = function () {
 	var name = this.items[this.focusedId].classname;
 	switch (name) {
 		case 'home':
-			moves("Αρχική");
+			moves(name);
 			if (activeCont.idnam.indexOf('home-cont') != -1){
                
 				break;
@@ -1175,62 +1175,62 @@ SubMenu.prototype.handleRequest = function () {
 			GLOBALS.focusmgr.focusObject("home-list-0", true);
 			break;
 		case 'live':
-			moves("Live");
+			moves(name);
 			if (activeCont.idnam == "live")
 				break;
 			o.loadJson("live", 0);
 			
             break;
 		case 'news':
-			moves("Ενημέρωση");
+			moves(name);
 			if (activeCont.idnam == "news")
 				break;
 			o.loadJson("news", 0);
 			break;
         case 'series':
-            moves("Σειρές");
+            moves(name);
             if (activeCont.idnam == "series")
                 break;
             o.loadJson("series", 0);
             break;
         case 'deltia':
-            moves("Δελτία Ειδήσεων");
+            moves(name);
             if (activeCont.idnam == "deltia")
                 break;
             o.loadJson("deltia", 0);
             break;
         case 'culture':
-            moves("Πολιτισμός");
+            moves(name);
             if (activeCont.idnam == "culture")
                 break;
             o.loadJson("culture", 0);
             break;
         case 'child':
-            moves("Παιδικά");
+            moves(name);
             if (activeCont.idnam == "child")
                 break;
             o.loadJson("child", 0);
             break;
 		case 'doc':
-			moves("Ντοκιμαντέρ");
+			moves(name);
 			if (activeCont.idnam == "ntokimanter")
 				break;
 			o.loadJson("ntokimanter", 0);
 			break;
 		case 'sports':
-			moves("Αθλητικά");
+			moves(name);
 			if (activeCont.idnam == "sports")
 				break;
 			o.loadJson("sports", 0);
 			break;
 		case 'shows':
-			moves("Ψυχαγωγία");
+			moves('ent');
 			if (activeCont.idnam == "shows")
 				break;
 			o.loadJson("ent", 0);
 			break;
 		case 'seires':
-			moves("Σειρές");
+			moves(name);
 			if (activeCont.idnam == "series")
 				break;
 			o.loadJson("series", 0);
@@ -1257,12 +1257,6 @@ SubMenu.prototype.handleRequest = function () {
 			GLOBALS.scenemgr.showCurrentScene("");
 			activeCont = radio;
 			break;
-			/*case 6:
-	    moves("Πρόγραμμα");
-	    if (activeCont.idnam == "epg")
-		break;
-	    o.createEPG();
-	    break;*/
 		case 'signup':
 			//moves("Είσοδος");//XXX
 			if (activeCont.idnam == "signup")
@@ -1270,7 +1264,7 @@ SubMenu.prototype.handleRequest = function () {
 			o.createUser();
 			break;
 		case 'srch':
-			moves("Αναζήτηση");
+			moves(name);
 			if (activeCont.idnam == "search")
 				break;
 			o.createSearch();
@@ -1290,16 +1284,6 @@ SubMenu.prototype.handleRequest = function () {
             GLOBALS.currentUserId = GLOBALS.currentUser = null;
             goRed(window.location.href);
             return;
-			/*case 6:
-	    moves("Big Brother");
-	    if (activeCont.idnam == "bigbrother")
-		break;
-	    document.getElementsByClassName("sidebar")[0].style.visibility = "hidden";
-	    var bbId = 67280;
-	    o.loadJson("bigbrother", bbId);
-	    llog(GLOBALS.scenemgr.sceneStack);
-	    break;
-	    */
 		default:
 			break;
 	}
@@ -2522,6 +2506,7 @@ HorizontalList.prototype.createSeriesShow = function () {
 }
 HorizontalList.prototype.initEpisodes = function (parent, xpos, ypos) {
 
+
 	this.itemmargin = (267+6);
 	this.initPosition = 175;
 	this.position = 175;
@@ -2581,6 +2566,10 @@ HorizontalList.prototype.initEpisodes = function (parent, xpos, ypos) {
 	this.outer = createClassDiv("", "", "event-list");
 	this.elem.appendChild(this.outer);
 	this.elem.style.height = this.listHeight + "px";
+
+
+    llog('[HorizontalList] init episodes');
+    llog(this.items);
 
 	for (var i = 0; i < this.items.length; i++) {
 		var inner = createClassDiv("", "", "episode");
@@ -3175,9 +3164,6 @@ HorizontalList.prototype.handleKeyPress = function (keyCode) {
 		case VK_ENTER:
 
 
-
-
-
             llog(this.listType+' '+ this.idnam);
 			debug(this.listType+' '+ this.idnam);
 			var live = GLOBALS.focusmgr.getObject("live"), item = this.items[this.focusedId];
@@ -3196,9 +3182,9 @@ HorizontalList.prototype.handleKeyPress = function (keyCode) {
             llog(item);
 
             var cat = (item.category)? item.category : this.elem.parentElement.parentElement.getElementsByClassName('category')[0].innerHTML;
+
             
-            moves(cat+"/" + (item.title +'/'+ item.dt).replace(/\//g,"-")+"/");
-                    moves("videoplayer");
+            //if(item.dt) moves(cat+"/" + (item.title +'/'+ item.dt).replace(/\//g,"-")+"/");
             
 			if (item.mp4 || item.episode || (this.listType && typeof item.media_item_link != 'undefined') || ((this.idnam == 'sports-select' || this.idnam.indexOf('home-list') > 0) || item.live)) {
 				if (GLOBALS.dev && item.id == 8) {
@@ -3238,7 +3224,7 @@ HorizontalList.prototype.handleKeyPress = function (keyCode) {
                     else if(item.episode) source = item.episode;
               //    }
 					item.url = source;
-					item.title = item.media_item_title;
+					if(item.media_item_title) item.title = item.media_item_title;
 					if (!item.show_title && typeof this.data.show != 'undefined')
 						item.show_title = this.data.show.title;
 
@@ -3257,7 +3243,11 @@ HorizontalList.prototype.handleKeyPress = function (keyCode) {
 					GLOBALS.item = item;
                     if(GLOBALS.PREVIEW) GLOBALS.videopreview.pause();
 
-					GLOBALS.scenemgr.initVPlayerSession(item.title, item.url, item.category, (item.subs && item.subs.length ? item.subs : 0), item.thumb, lu);
+
+                    if(GLOBALS.show) path = GLOBALS.show +'/'+ (item.title).replace(/\//g,"-")+"/";
+                    else  path = cat +'/'+ (item.title).replace(/\//g,"-")+"/";
+                    moves(path);
+                    LOBALS.scenemgr.initVPlayerSession(item.title, item.url, item.category, (item.subs && item.subs.length ? item.subs : 0), item.thumb, lu);
 
 					if (item.live) {
 						var ts = (new Date()).getTime()/1000;
@@ -3324,7 +3314,7 @@ HorizontalList.prototype.handleKeyPress = function (keyCode) {
 					path += 'ΜΗ ΧΑΣΕΙΣ' +'/'+ item.media_item_title.replace(/\//g, '-');
 				else
 					path += GLOBALS.cat +'/'+ GLOBALS.show +'/'+ item.media_item_title.replace(/\//g, '-');
-				moves(path);
+				moves('videoplayer/'+path);
 				if (ENABLE_PREROLL) {
 					GLOBALS.videoplayer.todo = item;
 					GLOBALS.videoplayer.ad = true;
