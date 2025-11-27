@@ -3247,7 +3247,7 @@ HorizontalList.prototype.handleKeyPress = function (keyCode) {
                     if(GLOBALS.show) path = GLOBALS.show +'/'+ (item.title).replace(/\//g,"-")+"/";
                     else  path = cat +'/'+ (item.title).replace(/\//g,"-")+"/";
                     moves(path);
-                    LOBALS.scenemgr.initVPlayerSession(item.title, item.url, item.category, (item.subs && item.subs.length ? item.subs : 0), item.thumb, lu);
+                    GLOBALS.scenemgr.initVPlayerSession(item.title, item.url, item.category, (item.subs && item.subs.length ? item.subs : 0), item.thumb, lu);
 
 					if (item.live) {
 						var ts = (new Date()).getTime()/1000;
