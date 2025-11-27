@@ -543,6 +543,10 @@ Rik.prototype.createHome = function (data) {
 	}
 }
 Rik.prototype.createLive = function (data) {
+
+    llog('[createLive]');
+    llog(data);
+
     var e = new Cont("live", false, data);
     GLOBALS.scenemgr.addScene(e);
     GLOBALS.scenemgr.showCurrentScene("");
@@ -935,6 +939,7 @@ SubMenu.prototype.setFocused = function (otherobj, focus) {
                 if(GLOBALS.previewTimer) clearTimeout(GLOBALS.previewTimer);
                 GLOBALS.previewTimer = null;
                 GLOBALS.previewTimer = setTimeout(function(){
+                    if(idnam == 'live') return ;
                     var idnam = me.items[me.focusedId].classname;
                     //EVI
                     if(idnam == "seires") idnam = 'series';
@@ -954,7 +959,8 @@ SubMenu.prototype.setFocused = function (otherobj, focus) {
                             console.log(url);
                             this.req = createHttpRequest(url, function (ret) {
                                 me.req = null;
-                                var JSONData = JSON.parse(ret);
+                               var JSONData = JSON.parse(ret);
+                              
                                 if(JSONData) {
                                    // var elems = JSONData.elems;
                                    // var elems = JSON.parse(JSONData);
@@ -1630,10 +1636,24 @@ llog("[Cont.prototype.init] data:");
 		info.appendChild(dat);
 		this.elem.appendChild(info);
 
-		if (currScene == 'live') {
+         var idlist = 'home-list-';
+         if (currScene != 'home-cont')
+                idlist = currScene+'-list-';
+
+		/*if (currScene == 'live') {
             llog("LIVE data");
+             thisdata = this.data.lists[0].shows;
+             var l = new HorizontalList(idlist + ind, 1, thisdata);
+                        l.data = thisdata;
+                        l.parentObj = this;
+                        l.itemheight = 266;
+                        this.bg.addClass('bg-vertical-width');
+                        llog("create horizontal list of live :" + (idlist +ind) );
+                        l.initShows(this.outer, "", "");
+                        this.buttons.push();
+                        GLOBALS.focusmgr.focusObject(idlist+"0", true);*/
             
-            llog(this.data);
+           /* llog(this.data);
 			var list = this.data.lists[0], eps = [], sc = getSchedule(), nextSc = getScheduleNext(), all = getScheduleAll();
 			var live = GLOBALS.scenemgr.live, schedule = live.schedule;
 			//var sports = GLOBALS.focusmgr.getObject("sports");
@@ -1681,15 +1701,14 @@ llog("[Cont.prototype.init] data:");
 
 				this.data.lists[0].shows.push(ep);
 			}
-		}
+            
+		}*/
 
 		
         // EVI - this must be changed because home json of RIK does not have lists
 
         
-        var idlist = 'home-list-';
-         if (currScene != 'home-cont')
-                idlist = currScene+'-list-';
+       
 
        
             if(currScene == 'home-cont'){ 
@@ -1714,6 +1733,7 @@ llog("[Cont.prototype.init] data:");
                         //EVI load menu category
                        //thisdata = JSON.parse(this.data);
                        thisdata = this.data;
+                       if(currScene == 'live') thisdata = this.data.lists[0].shows;
 
                         var l = new HorizontalList(idlist + ind, 1, thisdata);
                         l.data = thisdata;
@@ -2740,6 +2760,7 @@ HorizontalList.prototype.initLexeisEpisodes = function (parent, xpos, ypos, titl
     this.elem.style.width = w + "px";
 }
 HorizontalList.prototype.setFocused = function (otherobj, focus) {
+
     //console.log("HorizontalList set focused");
     //console.log(this.parent);
 
@@ -2822,7 +2843,8 @@ if(thisparent){
 			s = s.replace('<br>', '').replace('<b>', '').replace('</b>','');
 			//s = "<b>"+item.title + "</b><br/>" + s;
 			s = s.length > 180?s.substring(0,180)+" ...":s;
-			dat.innerHTML = s;
+
+			if(this.idnam.indexOf('live-list')) dat.innerHTML = s;
 		}
 		//var s = (typeof item.info != 'undefined' ? item.info:item.subtitle);
 		var s = item.channel? item.channel.toUpperCase()+" - " : "";
@@ -2839,7 +2861,7 @@ if(thisparent){
 				this.infoData.innerHTML = s;
 			}else if(dat){
                
-				dat.innerHTML = s;
+				if(this.idnam.indexOf('live-list')) dat.innerHTML = s;
 			}else {
                 console.log('error no datainfo area.');
             }

@@ -1615,6 +1615,7 @@ SceneManager.prototype.getCurrentScene = function () {
 }
 
 SceneManager.prototype.obtainFocus = function () {
+	
 	if (GLOBALS.focusmgr.getObject("epg-menu")) {
 		var o = GLOBALS.focusmgr.getObject("epg");
 		GLOBALS.focusmgr.focusObject("epg-list-" + o.activeId);
@@ -1623,6 +1624,13 @@ SceneManager.prototype.obtainFocus = function () {
 	if (this.sceneStack.length > 0) {
 		var obj = this.sceneStack[this.sceneStack.length - 1].obj;
 		var last = obj.idnam;
+
+		if(last == "live"){
+
+			GLOBALS.focusmgr.focusObject("live-list-0", true);
+			return true;
+		}
+
 		if (last == "episodes") {
 			var o = GLOBALS.focusmgr.getObject(activeCont.subCat), obj = GLOBALS.focusmgr.getObject('episodes');
 			if (o.idnam == 'sports' && typeof obj.buttons[obj.focusedId] != 'undefined') {
@@ -1631,6 +1639,9 @@ SceneManager.prototype.obtainFocus = function () {
 				GLOBALS.focusmgr.focusObject("episodes-" + activeCont.subCat);
 			return true;
 		}
+
+		
+
 		if (last == "search") {
 			var o = GLOBALS.focusmgr.getObject('search');
 			GLOBALS.focusmgr.focusObject(o.ktab_idnam, true);
@@ -4389,6 +4400,13 @@ function initApp() {
 			"classname": "home"
 		},
 		{
+			"name": "Live",
+			"active": true,
+			"image_on": "",
+			"image_off": "",
+			"classname": "live"
+		},
+		{
 			"name": "Σειρές",
 			"active": true,
 			"image_on": "",
@@ -4548,10 +4566,26 @@ function initApp() {
 	document.getElementById("appscreen").style.display = "none";
 	var dd = new Date().toISOString().split('T'), hh = dd[1].split(':'), h = new Date().getHours();
 	var dthm = parseInt(dd[0].replace(/-/g, '') + h + hh[1]);
-	if (dthm > 202507281000)
+	/*if (dthm > 202507281000)
 		ENABLE_LOGIN=0;
+*/
 
-	var me = this;
+	var menu = rikmenu;
+	if (ENABLE_CONSENT) {
+			/* FOR TESTING - DELETE FOR PRODUCTION */
+			deleteCookie("cookie_consent");
+			if(getCookie("cookie_consent") != ""){
+				loadScene(pageid);
+			} else {
+
+				var consentFrame = new ConsentFrame("consentFrame");
+				consentFrame.init(document.body,"","");
+			}
+		} else
+			loadScene(pageid);
+
+
+	/*var me = this;
 	var url = 'menu.php?'+Math.random();
 	this.req = createHttpRequest(url, function (ret) {
 		me.req = null;
@@ -4569,7 +4603,7 @@ function initApp() {
 		}
 
 		if (ENABLE_CONSENT) {
-			/* FOR TESTING - DELETE FOR PRODUCTION */
+			
 			deleteCookie("cookie_consent");
 			if(getCookie("cookie_consent") != ""){
 				loadScene(pageid);
@@ -4582,7 +4616,7 @@ function initApp() {
 			loadScene(pageid);
 
 		
-	});
+	});*/
 
 }
 
