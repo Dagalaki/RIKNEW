@@ -5,6 +5,28 @@ var newsarray = [], ENABLE_PREROLL = true;
 if (GLOBALS.dev)
 	LBANNER_CATS.push('Γαλλικό Πρωτάθλημα Ποδοσφαίρου');
 LBANNER_CATS.push('Big Brother Live');
+
+
+var liveRadioElements = [{
+        "id": "ΡΙΚ ΠΡΩΤΟ",
+        "img": "img/rikradio1.png",
+        "lnk": "http://r1.cloudskep.com/cybcr/cybc1/icecast.audio"
+    }, {
+        "id": "ΡΙΚ ΔΕΥΤΕΡΟ",
+        "img": "img/rikradio2.png",
+        "lnk": "http://r1.cloudskep.com/cybcr/cybc2/icecast.audio"
+    }, {
+        "id": "ΡΙΚ ΤΡΙΤΟ",
+        "img": "img/rikradio3.png",
+        "lnk": "http://r1.cloudskep.com/cybcr/cybc3/icecast.audio"
+    }, {
+        "id": "ΡΙΚ CLASSIC",
+        "img": "img/rikradio4.png",
+        "lnk": "http://r1.cloudskep.com/cybcr/cybc4/icecast.audio"
+    }];
+
+
+
 function getSchedule() {
 	var schedule = GLOBALS.scenemgr.live.schedule;
 	var ts = (new Date()).getTime()/1000, ret = [];
@@ -1955,6 +1977,7 @@ Cont.prototype.initEpisodes = function (parent, xpos, ypos, title) {
 Cont.prototype.initCinema = function (parent, xpos, ypos, title) {
     var info = createClassDiv("", "", "start-info");
     var titl = createClassDiv("", "", "start-info-title");
+    
     var dat = createClassDiv("", "", "start-info-data");
     titl.innerHTML = this.data.show.title;
     var s = this.data.show.short_descr.replace('<br>', '');
@@ -2110,13 +2133,15 @@ Cont.prototype.initRadio = function (parent, xpos, ypos, title) {
     var radioBG = GLOBALS.focusmgr.getObject("radio");
     var eps = [], ep = {};
 
-    for (var i = 0; i < this.data.shows.length;i++) {
-        var ep = {}, sh = this.data.shows[i];
+    for (var i = 0; i < this.data.length;i++) {
+
+        var ep = {}, sh = this.data[i];
         ep.id = sh.id;
-        ep.title = sh.title;
-        ep.media_item_title = sh.title;
-        ep.img = sh.menu_icon;
-        ep.bg = sh.bg;
+        ep.title = sh.id;
+        ep.media_item_title = sh.id;
+        ep.img = sh.img;
+        ep.lnk = sh.lnk;
+       // ep.bg = sh.bg;
         eps.push(ep);
     }
 
@@ -2309,6 +2334,43 @@ function HorizontalList(idnam, listType, items) {
 	this.waitForKey=0;
 }
 HorizontalList.prototype = new BaseObject();
+/*HorizontalList.prototype.stopAudio = function () {
+    var me = this;
+    me.audio = document.getElementById('myradio');
+    try {
+        //me.audio.stop();
+        me.audio.data = "";
+        me.audio.firstChild.src = "";
+        me.playRadio = false;
+       // document.getElementById("liveradioinfo").style.display = "none";
+        //document.getElementById("liveplayinginfo").innerHTML = "";
+    } catch (e) {}
+    try {
+        me.audio.release();
+    } catch (e) {}
+}
+HorizontalList.prototype.checkLink = function () {
+    var item = this.buttons[this.focusedId];
+    moves("Ζωντανό Πρόγραμμα/Live Radio/" + item.id);
+//   document.getElementById("liveplayinginfo").innerHTML = "LOADING: " + item.id;
+  //  document.getElementById("liveradioinfo").style.display = "block";
+   // document.getElementById("liveplayinginfo").innerHTML = "NOW PLAYING: " + item.id;
+
+    this.audio = document.getElementById('myradio');
+
+    this.audio.data = item.getElementsByClassName('lnk')[0].innerHTML;
+    this.audio.src = item.getElementsByClassName('lnk')[0].innerHTML;
+    var ag = navigator.userAgent.toUpperCase();
+    if (ag.indexOf("SONY") > 0) this.audio.vtype = "audio/aacp";
+    else this.audio.vtype = "audio/mpeg";
+
+    try {
+        this.audio.play(1);
+        this.playRadio = true;
+    } catch (e) {}
+
+}*/
+
 HorizontalList.prototype.initShows = function (parent, xpos, ypos) {
     
 
@@ -2566,7 +2628,7 @@ HorizontalList.prototype.initEpisodes = function (parent, xpos, ypos) {
          else {
             var o = GLOBALS.focusmgr.getObject('submenu-0');
              var menuitem = rikmenu[o.focusedId];
-             alert(menuitem.name);
+            
             cat.innerHTML = menuitem.name;
         }
 	} else if (this.idnam == 'sports-select') {
@@ -2597,8 +2659,19 @@ HorizontalList.prototype.initEpisodes = function (parent, xpos, ypos) {
 
 		var im = document.createElement('img');
 		im.src = "http://rik.smart-tv-data.com/" +  this.items[i].img;
+
+        if(this.items[i].lnk){
+            var lnk = createClassDiv("", "", "lnk");
+            lnk.style.display = 'none';
+            lnk.innerHTML = this.items[i].lnk;
+            inner.appendChild(lnk);
+        }
+    
+
         var titl = createClassDiv('', '', 'title');
-        titl.innerHTML = this.items[i].dt;
+
+        if(this.items[i].title) titl.innerHTML = this.items[i].title;
+        else if(this.items[i].dt) titl.innerHTML = this.items[i].dt;
         titl.innerHTML = uppercaseGreekWithoutAccents(titl.innerHTML);
         inner.appendChild(titl);
 		inner.appendChild(im);
@@ -3180,6 +3253,11 @@ HorizontalList.prototype.handleKeyPress = function (keyCode) {
 			break;
 		case VK_ENTER:
 
+            if(this.idnam.indexOf('radio-list') >0){
+                this.checklink();
+                break;
+            }
+
 
             llog(this.listType+' '+ this.idnam);
 			debug(this.listType+' '+ this.idnam);
@@ -3233,6 +3311,17 @@ HorizontalList.prototype.handleKeyPress = function (keyCode) {
 						document.getElementById('bb-card').style.display='block';
 					return;
 				}
+
+                if(cat  == 'RADIO'){
+
+                    var e = new Cont("radio", false, liveRadioElements);
+                    GLOBALS.scenemgr.addScene(e);
+                    GLOBALS.scenemgr.showCurrentScene("");
+                    activeCont = GLOBALS.focusmgr.getObject("radio");
+                    return true;
+                }
+
+
 				if(GLOBALS.useRef){
                   llog('play video');
                   llog(item);
@@ -3780,7 +3869,7 @@ Radio.prototype.init = function (parent, xpos, ypos) {
 	var e = createDiv(0, 0, 1280, 720, this.idnam), item = {};
 
 	if(NEW_RADIO){
-		item = radioStreams.shows[this.radioIndex];
+		item = liveRadioElements[this.radioIndex];
 		this.source = item.media_item_link;
 		bg = item.bg;
 		e.style.backgroundRepeat = 'no-repeat';

@@ -4390,6 +4390,8 @@ function initApp() {
 	}
 
 
+	
+
 
 	rikmenu= [
 		{
