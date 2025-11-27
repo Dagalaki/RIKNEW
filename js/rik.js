@@ -2975,12 +2975,7 @@ function goRed(url) {
 }
 
 HorizontalList.prototype.handleKeyPress = function (keyCode) {
-	/*if (GLOBALS.focusmgr.getObject('home-cont').keycheck) {
-		GLOBALS.focusmgr.getObject('home-cont').keycheck = 0;
-		GLOBALS.focusmgr.getObject('home-cont').firsttime = 0;
-		this.setFocused(this.idnam, true);
-		return;
-	}*/
+	
 	if (this.waitForKey) {
 		var item = GLOBALS.item, source = item.media_item_link;
 		document.getElementById('bb-card').style.display='none';
@@ -3269,6 +3264,7 @@ HorizontalList.prototype.handleKeyPress = function (keyCode) {
                     if(GLOBALS.show) path = GLOBALS.show +'/'+ (item.title).replace(/\//g,"-")+"/";
                     else  path = cat +'/'+ (item.title).replace(/\//g,"-")+"/";
                     moves(path);
+                    
                     GLOBALS.scenemgr.initVPlayerSession(item.title, item.url, item.category, (item.subs && item.subs.length ? item.subs : 0), item.thumb, lu);
 
 					if (item.live) {
