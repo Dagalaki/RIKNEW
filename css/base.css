@@ -5754,7 +5754,7 @@ div.results-container div.middle-item {
 	left: 10px;
 	top: 10px;
 	text-shadow: 2px 2px #06f;
-	display:block!important;
+	display:none!important;
 }
 
 .rf-info {
