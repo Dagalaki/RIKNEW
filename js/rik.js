@@ -1207,6 +1207,7 @@ SubMenu.prototype.handleRequest = function () {
 			GLOBALS.focusmgr.focusObject("home-list-0", true);
 			break;
 		case 'live':
+            GLOBALS.videopreview.bg.src = "http://rik.smart-tv-data.com/img/video/1CIRCLES2B.2e16d0ba.fill-450x253-512.jpg";
             GLOBALS.videopreview.pause();
              GLOBALS.PREVIEW = 0;
 			moves(name);
