@@ -1039,7 +1039,7 @@ SubMenu.prototype.setFocused = function (otherobj, focus) {
                         
                     
                     }
-                }, 500);
+                }, 1500);
                 }//END OF PREVIEW
 
             }
@@ -2978,7 +2978,7 @@ if(GLOBALS.PREVIEW){
                     }
                     
                     GLOBALS.previewTimer = null;
-                }, 500);
+                }, 1500);
                 var imgToShow = this.items[i].img;
                 if(GLOBALS.videopreview.bg) GLOBALS.videopreview.bg.src = "http://rik.smart-tv-data.com/"+ imgToShow;
 
