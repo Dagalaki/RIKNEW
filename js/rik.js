@@ -1180,11 +1180,12 @@ SubMenu.prototype.handleRequest = function () {
 	var name = this.items[this.focusedId].classname;
 	switch (name) {
 		case 'home':
+            
 			moves(name);
-			if (activeCont.idnam.indexOf('home-cont') != -1){
-               
+			/*if (activeCont.idnam.indexOf('home-cont') != -1){
+               alert('here');
 				break;
-            }
+            }*/
 			while(GLOBALS.scenemgr.sceneStack.length > 2){
                 
 				GLOBALS.scenemgr.goBack();
@@ -1194,6 +1195,7 @@ SubMenu.prototype.handleRequest = function () {
 			o.buttons[o.focusedId].elem.style.display = 'none';
 			if(o.buttons[o.focusedId+1])
 				o.buttons[o.focusedId+1].elem.style.display = 'none';
+
 			var l = GLOBALS.focusmgr.getObject("home-list-0");
 			o.focusedId = l.focusedId = 0;
 			o.outertop = 0;
