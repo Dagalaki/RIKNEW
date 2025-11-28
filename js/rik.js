@@ -961,6 +961,7 @@ SubMenu.prototype.setFocused = function (otherobj, focus) {
                 if(GLOBALS.previewTimer) clearTimeout(GLOBALS.previewTimer);
                 GLOBALS.previewTimer = null;
                 GLOBALS.previewTimer = setTimeout(function(){
+
                     if(idnam == 'live') return ;
                     var idnam = me.items[me.focusedId].classname;
                     //EVI
@@ -1178,6 +1179,7 @@ SubMenu.prototype.handleRequest = function () {
 	var o = GLOBALS.focusmgr.getObject("rik");
 	document.getElementsByClassName("sidebar")[0].style.visibility = "visible";
 	var name = this.items[this.focusedId].classname;
+    GLOBALS.PREVIEW = 1;
 	switch (name) {
 		case 'home':
             
@@ -1205,6 +1207,8 @@ SubMenu.prototype.handleRequest = function () {
 			GLOBALS.focusmgr.focusObject("home-list-0", true);
 			break;
 		case 'live':
+            GLOBALS.videopreview.pause();
+             GLOBALS.PREVIEW = 0;
 			moves(name);
 			if (activeCont.idnam == "live")
 				break;

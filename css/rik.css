@@ -351,6 +351,18 @@ div.list-container.league .start-info {
      height:156px;
 }
 
+#live .show .title, #radio .episode .title {
+    display: none!important;
+}
+
+#radio .background, #live .background{
+    visibility: hidden!important;
+}
+
+#radio .start-info, #live .start-info{
+    background: none!important;
+}
+
 .movies-category .episode .title,  .show .title{
     font-size: 20px!important;
     font-weight: bold;
@@ -1190,7 +1202,7 @@ div.list-container.league .start-info {
 }
 
 .submenu .outer .inner.focused{
-    border: solid 4px white;
+opacity: 1;
     padding: 1px;
 }
 
@@ -1221,7 +1233,7 @@ div.list-container.league .start-info {
     font-size: 17px;
     margin-bottom: 3px;
     left: 75px;
-    
+    opacity: 0.55;
 }
 
 .sidebar .submenu .inner.seperator {
@@ -1321,6 +1333,11 @@ div.menuelemicon .icon {
     position: relative;
     top: 2px !important;
     left: 2px !important;
+    opacity: 0.55;
+}
+
+.focused div.menuelemicon .icon, .active div.menuelemicon .icon {
+    opacity: 1;
 }
 
 .sidebar.open .menuelemicon.big {
