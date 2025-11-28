@@ -393,7 +393,7 @@
 #debugButton_temp {
     position: absolute;
     bottom: 40px;
-	display: none;    
+	display: none!important;    
     /*background-image: url(images/icons.png);*/
     background-position: -60px 0px;
     width: 30px;
