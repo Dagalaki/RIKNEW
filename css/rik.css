@@ -360,7 +360,7 @@ div.list-container.league .start-info {
     width: inherit;
     top: 58px;
     padding-top: 7px;
-    height: 81px;
+    height: 86px;
     font-weight: bold;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -370,9 +370,9 @@ div.list-container.league .start-info {
 }
 
 .show .title{
-    top:145px;
+    top:130px;
     display: block!important;
-    box-shadow: 10px 10px 10px 10px #3b3636;
+    box-shadow: 10px 10px 10px 10px #0a0a0a;
     background: rgba(59, 54, 54, 0.5);
 }
 
@@ -1452,7 +1452,7 @@ div.menuelemicon .icon.radioNew {
 #appscreen.v2 .start-info {
     left: 175px;
     height: 316px;
-    background: rgba(0,0,0,0.3);
+    background: rgba(0,0,0,0.5);
     padding: 10px;
     border-radius: 10px;
 }
