@@ -1230,12 +1230,17 @@ SubMenu.prototype.handleRequest = function () {
 
 			GLOBALS.focusmgr.focusObject("home-list-0", true);
 			break;
+        case 'radio':
+             GLOBALS.videopreview.bg.src = "http://rik.smart-tv-data.com/img/video/1CIRCLES2B.2e16d0ba.fill-450x253-512.jpg";
+            GLOBALS.videopreview.pause();
+             GLOBALS.PREVIEW = 0;
+            break;
 		case 'live':
             GLOBALS.videopreview.bg.src = "http://rik.smart-tv-data.com/img/video/1CIRCLES2B.2e16d0ba.fill-450x253-512.jpg";
             GLOBALS.videopreview.pause();
              GLOBALS.PREVIEW = 0;
 			moves(name);
-			if (activeCont.idnam == "live")
+			if (activeCont.idnam == "live" )
 				break;
 			o.loadJson("live", 0);
 			
