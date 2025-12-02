@@ -2914,27 +2914,33 @@ if(thisparent){
 
 		var dat = thisparent.getElementsByClassName("start-info-data")[0];
 
+       
+        //thisparent.getElementsByClassName('start-info-data')[0].appendChild(divGreen);
 
 		if(dat && this.idnam.indexOf('home-list') == -1) {
             
-            var s = item.channel? item.channel.toUpperCase()+" - " : "";
-			s+=item.subtitle;
-             s += "<br/>" + item.info;
+            var s = "<label style='color:#10dc10'>" 
+            s += item.channel? item.channel.toUpperCase()+" - " : "";
+			s += item.subtitle;
+             s += "</label><br/>" + item.info;
 			s = s.replace('<br>', '').replace('<b>', '').replace('</b>','');
 			//s = "<b>"+item.title + "</b><br/>" + s;
-			s = s.length > 180?s.substring(0,180)+" ...":s;
+			s = s.length > 120?s.substring(0,120)+" ...":s;
 
 			if(this.idnam.indexOf('live-list')) dat.innerHTML = s;
 		}
 		//var s = (typeof item.info != 'undefined' ? item.info:item.subtitle);
-		var s = item.channel? item.channel.toUpperCase()+" - " : "";
+		var s = "<label style='color:#10dc10'>";
+        s += item.channel? item.channel.toUpperCase()+" - " : "";
         s += item.subtitle;
-        s += "<br/>" + item.info;
+        s += "</label><br/>" + item.info;
+
+
         if(typeof s != 'undefined'){
 
 			s = s.replace('<br>', '').replace('<b>', '').replace('</b>','');
-			if (s.length > 260) {
-				s = smart_substr(s, 260) + " ...";
+			if (s.length > 160) {
+				s = smart_substr(s, 160) + " ...";
 			}
 			if(this.infoData){
                 
