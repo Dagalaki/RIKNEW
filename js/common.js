@@ -2080,7 +2080,13 @@ SceneManager.prototype.showCurrentScene = function (index, top) {
 	this.currentScene = currentScene;
 	this.hidePreviousScenes();
 
-if ([/*'series',*/ 'deltia','news', 'shows', 'culture', 'sports', 'child', 'radio', 'live'].includes(elem.obj.idnam)) {
+	if (elem.obj.idnam == "radio") {
+		GLOBALS.focusmgr.focusObject("radio-list", true);
+		return true;
+	}
+
+var menuobj = GLOBALS.focusmgr.getObject('side-bar');
+if ([ 'deltia','news', 'shows', 'culture', 'sports', 'child', 'radio', 'live'].includes(elem.obj.idnam) && menuobj.isOpen) {
     return true;
 }
 	if (elem.obj.idnam == "home-cont") {
@@ -2122,10 +2128,7 @@ if ([/*'series',*/ 'deltia','news', 'shows', 'culture', 'sports', 'child', 'radi
 		GLOBALS.focusmgr.focusObject("sports-list", true);
 		return true;
 	}
-	if (elem.obj.idnam == "radio") {
-		GLOBALS.focusmgr.focusObject("radio-list", true);
-		return true;
-	}
+	
 
 	
 

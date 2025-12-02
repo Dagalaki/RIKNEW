@@ -1386,7 +1386,7 @@ console.log(menu);
     this.rikMObj.init(this.buttons[0], "", "");
 }
 SideBar.prototype.open = function () {
-    
+    this.isOpen = true;
 	this.elem.style.width = "295px";
 	//GLOBALS.scenemgr.sceneStack[GLOBALS.scenemgr.sceneStack.length - 1].obj.elem.style.left = "190px";
     //GLOBALS.scenemgr.sceneStack[GLOBALS.scenemgr.sceneStack.length - 1].obj.elem.style.opacity = "0.4";
@@ -1409,7 +1409,7 @@ SideBar.prototype.open = function () {
 	}
 }
 SideBar.prototype.close = function () {
-    
+    this.isOpen = false;
 	this.elem.style.width = "174px";
 	//GLOBALS.scenemgr.sceneStack[GLOBALS.scenemgr.sceneStack.length - 1].obj.elem.style.left = "0px";
     //GLOBALS.scenemgr.sceneStack[GLOBALS.scenemgr.sceneStack.length - 1].obj.elem.style.opacity = "1";
@@ -1802,9 +1802,10 @@ llog("[Cont.prototype.init] data:");
                         l.initShows(this.outer, "", "");
                         this.buttons.push();
                        // GLOBALS.focusmgr.focusObject(idlist+"0", true);
-                         var o = GLOBALS.focusmgr.getObject('side-bar');
+                       /*  var o = GLOBALS.focusmgr.getObject('side-bar');
                            o.open();
                             GLOBALS.focusmgr.focusObject('submenu-'+o.focusedId,true);
+                */
                 }
 
         /*for (var i = 0; i < thisdata.length; i++) {
@@ -3185,6 +3186,14 @@ HorizontalList.prototype.handleKeyPress = function (keyCode) {
 			break;
 		case VK_UP:
             
+             var o = GLOBALS.focusmgr.getObject('side-bar');
+            var o2 = GLOBALS.focusmgr.getObject('submenu-'+o.focusedId);
+            o2.focusedId--;
+            if(o2.focusedId < 0) o2.focusedId = 0;
+            o2.handleRequest();
+
+            break;
+
 			if (activeCont.idnam == "bigbrother" || activeCont.idnam == "radio") {
 				// GLOBALS.focusmgr.focusObject("videoplayer", true);
 				break;
@@ -3232,6 +3241,15 @@ HorizontalList.prototype.handleKeyPress = function (keyCode) {
 
 			break;
 		case VK_DOWN:
+
+            var o = GLOBALS.focusmgr.getObject('side-bar');
+            var o2 = GLOBALS.focusmgr.getObject('submenu-'+o.focusedId);
+            o2.focusedId++;
+            if(o2.focusedId > o2.buttons.length-1) o2.focusedId = o2.buttons.length-1;
+            o2.handleRequest();
+            break;
+
+
 			if (activeCont.idnam == "home-cont" || keyLists.indexOf(activeCont.idnam) != -1) {
 				var o = GLOBALS.focusmgr.getObject(activeCont.idnam);
 				o.focusedId++;
@@ -4202,7 +4220,7 @@ Radio.prototype.handleKeyPress = function (keyCode) {
 			this.pause();
 			break;
 		case VK_BACK:
-           
+
 			if(document.getElementById("radio-control")) document.getElementById("radio-control").style.display = "none";
 			var vid = document.getElementById('video-radio');
 			if (vid) {
