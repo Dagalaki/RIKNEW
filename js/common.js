@@ -2239,6 +2239,14 @@ SceneManager.prototype.goBack = function () {
 	if (img)
 		img.parentNode.removeChild(img);
 
+	if (elem.obj.idnam == "radio") {
+		
+		GLOBALS.focusmgr.focusObject("radio-list");
+		return true;
+
+	}
+
+
 	if (elem.obj.idnam == "search") {
 		m.activeId = 0;
 		m.focusedId = 0;
@@ -2272,6 +2280,7 @@ SceneManager.prototype.goBack = function () {
 			m.focusedId = 3;
 		}
 		m.setActive();
+		//alert(elem.obj.idnam + "-list-"+ activeCont.focusedId);
 		GLOBALS.focusmgr.focusObject(elem.obj.idnam + "-list-"+ activeCont.focusedId);
 		return true;
 	}
@@ -2294,10 +2303,7 @@ SceneManager.prototype.goBack = function () {
 		GLOBALS.focusmgr.focusObject("epg-list");
 		return true;
 	}
-	if (elem.obj.idnam == "radio") {
-		GLOBALS.focusmgr.focusObject("radio-list");
-
-	}
+	
 	// GLOBALS.focusmgr.focusObject(elem.obj.idnam);
 }
 

@@ -2919,7 +2919,7 @@ bg = "http://rik.smart-tv-data.com/" + bg;
 		if (typeof live != 'undefined')
 			live.elem.style.backgroundImage = "";
 
-console.log(this.parentObj);
+llog(this.parentObj);
 		if (this.idnam.indexOf('home-list') != -1) { //home 
 			this.parentObj.bg.style.backgroundImage = 'url("'+ bg+'")';
 		} else if (this.idnam.indexOf('live-list') != -1 && (item.live || item.scheduled) && item.category == 'Αθλητικά') {
@@ -2988,12 +2988,14 @@ if(thisparent){
             }
 		}
 	}
+llog(this.buttons.length);
 	for (var i = 0; i < this.buttons.length; i++) {
 		if (focus) {
 			if (i == this.focusedId) {
 				this.buttons[i].addClass("focused");
 
 if(GLOBALS.PREVIEW){
+    llog('preview enabled');
                 if(GLOBALS.previewTimer) clearTimeout(GLOBALS.previewTimer);
                 GLOBALS.previewTimer = null;
                 var me = this;
@@ -4200,6 +4202,7 @@ Radio.prototype.handleKeyPress = function (keyCode) {
 			this.pause();
 			break;
 		case VK_BACK:
+           
 			if(document.getElementById("radio-control")) document.getElementById("radio-control").style.display = "none";
 			var vid = document.getElementById('video-radio');
 			if (vid) {
