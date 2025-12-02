@@ -391,13 +391,13 @@ Rik.prototype.init = function (parent, xpos, ypos) {
     // EVI Load Rik home json - Τελευταία Επεισόδια
     //var url = 'http://rik.smart-tv-data.com/json/new/home.json';
 
-    var url = './getHomeJson.php';
+    var url = './getHomeJson.php?cat=series';
     this.req = createHttpRequest(url, function (ret) {
 		me.req = null;
 		var JSONData = JSON.parse(ret);
      //   llog("Rik Home Data");
       //  llog(JSONData);
-		me.createHome(JSONData);
+		me.createSeries(JSONData);
         //me.createHome(JSONData.elems);
 	});
 
@@ -1118,6 +1118,7 @@ SubMenu.prototype.handleKeyPress = function (keycode) {
 			    this.focusedId--;
             if (this.focusedId < 0) this.focusedId = 0;
             this.setFocused(this.idnam, true);
+            this.handleRequest();
             break;
         case VK_DOWN:
             this.focusedId++;
@@ -1125,13 +1126,14 @@ SubMenu.prototype.handleKeyPress = function (keycode) {
                 this.focusedId = this.buttons.length - 1;
             }
             this.setFocused(this.idnam, true);
+            this.handleRequest();
             break;
         case VK_ENTER:
 
            // moves(activeCont.idnam);
 
             var o = GLOBALS.focusmgr.getObject("side-bar");
-            o.close();
+            //o.close();
             this.activeId = this.focusedId;
 		    if (activeCont.idnam == 'radio1' || activeCont.idnam == 'radio2') {
 			    var vid = document.getElementById('video');
@@ -1772,7 +1774,10 @@ llog("[Cont.prototype.init] data:");
                         llog("create horizontal list of shows :" + (idlist +ind) );
                         l.initShows(this.outer, "", "");
                         this.buttons.push();
-                        GLOBALS.focusmgr.focusObject(idlist+"0", true);
+                       // GLOBALS.focusmgr.focusObject(idlist+"0", true);
+                         var o = GLOBALS.focusmgr.getObject('side-bar');
+                           o.open();
+                            GLOBALS.focusmgr.focusObject('submenu-'+o.focusedId,true);
                 }
 
         /*for (var i = 0; i < thisdata.length; i++) {
@@ -1839,7 +1844,10 @@ llog("[Cont.prototype.init] data:");
 			list.data = this.data;
 		}
 
-		GLOBALS.focusmgr.focusObject(this.idnam + "-list", true);
+        var o = GLOBALS.focusmgr.getObject('submenu-0');
+        o.open();
+        GLOBALS.focusmgr.focusObject('submenu-0',true);
+	//	GLOBALS.focusmgr.focusObject(this.idnam + "-list", true);
 	}
 }
 Cont.prototype.initBigBrother = function (parent, xpos, ypos, title) {
@@ -2444,7 +2452,7 @@ HorizontalList.prototype.initShows = function (parent, xpos, ypos) {
     this.outer.style.width = w + "px";
     console.log("current scene" + GLOBALS.scenemgr.getCurrentScene().sceneId);
     console.log("focus on list of shows "+ this.idnam);
-    GLOBALS.focusmgr.focusObject(this.idnam, true);
+ //   GLOBALS.focusmgr.focusObject(this.idnam, true);
 }
 HorizontalList.prototype.setShowImg = function (x) {
     var url = "";

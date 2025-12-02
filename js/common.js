@@ -2080,6 +2080,10 @@ SceneManager.prototype.showCurrentScene = function (index, top) {
 	this.currentScene = currentScene;
 	this.hidePreviousScenes();
 
+
+if ([/*'series',*/ 'deltia','news', 'shows', 'culture', 'sports', 'child', 'radio'].includes(elem.obj.idnam)) {
+    return true;
+}
 	if (elem.obj.idnam == "home-cont") {
 		GLOBALS.focusmgr.focusObject("home-list-0", true);
 		return true;
@@ -4390,24 +4394,17 @@ function initApp() {
 	}
 
 
-	
+
 
 
 	rikmenu= [
-		{
+		/*{
 			"name": "Αρχική",
 			"active": true,
 			"image_on": "",
 			"image_off": "",
 			"classname": "home"
-		},
-		{
-			"name": "Live",
-			"active": true,
-			"image_on": "",
-			"image_off": "",
-			"classname": "live"
-		},
+		},*/
 		{
 			"name": "Σειρές",
 			"active": true,
@@ -4457,6 +4454,13 @@ function initApp() {
 			"image_on": "",
 			"image_off": "",
 			"classname": "child"
+		},
+		{
+			"name": "Radio",
+			"active": true,
+			"image_on": "",
+			"image_off": "",
+			"classname": "radio"
 		}/*,
 		{
 			"name": "LIVE",
