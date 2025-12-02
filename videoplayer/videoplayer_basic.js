@@ -357,7 +357,7 @@ this.createSkip = function () {
 			case VK_STOP:
 			case 8: // for edge backspace button
 				self.stop();
-				if(GLOBALS.PREVIEW) GLOBALS.videopreview.play();
+				if(GLOBALS.videopreview) GLOBALS.videopreview.play();
 				//GLOBALS.scenemgr.setRF();
 				$("#player").removeClass("show");
 				$("#subs-container").html("");

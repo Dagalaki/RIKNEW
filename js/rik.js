@@ -170,7 +170,7 @@ VideoPreview.prototype.pause = function(){
 VideoPreview.prototype.play = function(){
     
     if(GLOBALS.ui == 3) return;
-    debug("playing video preview again");
+    llog("playing video preview again");
     this.video.style.opacity = 0;
     if(this.playerType == "oipf"){
         this.video.play(1);
@@ -637,7 +637,8 @@ Rik.prototype.createSports = function (data) {
     activeCont = GLOBALS.focusmgr.getObject("sports");
 }
 Rik.prototype.createRadio = function () {
-    var e = new Cont("radio", false, radioStreams);
+
+    var e = new Cont("radio", false, liveRadioElements);
     GLOBALS.scenemgr.addScene(e);
     GLOBALS.scenemgr.showCurrentScene("");
     //e.elem.style.backgroundImage = "url("+ this.live.bg_icon +")";
@@ -746,6 +747,13 @@ Rik.prototype.createUser = function () {
 //http://rik.smart-tv-data.com/json/new/sports.json
 
 Rik.prototype.loadJson = function (idnam, id, epSubcat, activeListId) {
+
+
+    if(idnam == 'radio'){
+        this.createRadio();
+        return true;
+    }
+
     var me = this;
     //var url = 'http://rik.smart-tv-data.com/json/new/' + idnam + '.json';
 var isEpisodes = false;
@@ -757,6 +765,9 @@ if(idnam == 'episodes') {
 } 
 else var url = "getHomeJson.php?cat="+idnam;
     
+
+
+
 
     this.req = createHttpRequest(url, function (ret) {
         me.req = null;
@@ -770,6 +781,9 @@ else var url = "getHomeJson.php?cat="+idnam;
         switch (idnam) {
             case "home-cont":
                 me.createHome(JSONData.elems);
+                break;
+            case "radio":
+                me.createRadio();
                 break;
             case "live":
                 var elems = JSONData.elems;
@@ -962,7 +976,13 @@ SubMenu.prototype.setFocused = function (otherobj, focus) {
                 GLOBALS.previewTimer = null;
                 GLOBALS.previewTimer = setTimeout(function(){
 
-                    if(idnam == 'live') return ;
+                    if(me.focusedId == me.buttons.length-1) {
+                        GLOBALS.focusmgr.getObject('rik').createRadio();
+                        return true;
+                    } 
+
+
+                    if(idnam == 'live' || idnam == 'radio') return ;
                     var idnam = me.items[me.focusedId].classname;
                     //EVI
                     if(idnam == "seires") idnam = 'series';
@@ -978,6 +998,8 @@ SubMenu.prototype.setFocused = function (otherobj, focus) {
                             isEpisodes = true;
                         } 
                         else var url = "getHomeJson.php?cat="+idnam;
+
+
 
                             console.log(url);
                             this.req = createHttpRequest(url, function (ret) {

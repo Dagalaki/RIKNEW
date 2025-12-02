@@ -1428,6 +1428,9 @@ div.menuelemicon .icon.sports {
 div.menuelemicon .icon.child {
     background-image: url(../img/icons/KIDS.png);
 }
+div.menuelemicon .icon.radio {
+    background-image: url(../img/icons/RADIO.png);
+}
 div.menuelemicon .icon.culture {
     background-image: url(../img/icons/POLITISMOS.png);
 }

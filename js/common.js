@@ -1,6 +1,6 @@
 var ENABLE_CONSENT = 0, LOG = 0, DAI = false, ENABLE_MIDDLE=1, ENABLE_POSTROLL=1, sonyChrome, NEW_RADIO = 1, ENABLE_LOGIN=1, rikmenu=[];
 var STATE_PLAYING = 1, STATE_STOP = 0, STATE_PAUSE = 2, STATE_CONNECTING = 3, STATE_BUFFERING = 4, STATE_FINISHED = 5, STATE_ERROR = 6;
-var menu=null, keyLists =["home-cont", 'live','news', 'doc' ,'sports', 'shows', 'series', 'deltia', 'culture', 'child'];
+var menu=null, keyLists =["home-cont", 'live','news', 'doc' ,'sports', 'shows', 'series', 'deltia', 'culture', 'child', 'radio'];
 function debug(s) {
 	devmode2(s);
 }
@@ -1633,7 +1633,7 @@ SceneManager.prototype.obtainFocus = function () {
 
 		if (last == "episodes") {
 			var o = GLOBALS.focusmgr.getObject(activeCont.subCat), obj = GLOBALS.focusmgr.getObject('episodes');
-			if (o.idnam == 'sports' && typeof obj.buttons[obj.focusedId] != 'undefined') {
+			if (o && o.idnam == 'sports' && typeof obj.buttons[obj.focusedId] != 'undefined') {
 				GLOBALS.focusmgr.focusObject(obj.buttons[obj.focusedId].idnam);
 			} else
 				GLOBALS.focusmgr.focusObject("episodes-" + activeCont.subCat);
@@ -2080,8 +2080,7 @@ SceneManager.prototype.showCurrentScene = function (index, top) {
 	this.currentScene = currentScene;
 	this.hidePreviousScenes();
 
-
-if ([/*'series',*/ 'deltia','news', 'shows', 'culture', 'sports', 'child', 'radio'].includes(elem.obj.idnam)) {
+if ([/*'series',*/ 'deltia','news', 'shows', 'culture', 'sports', 'child', 'radio', 'live'].includes(elem.obj.idnam)) {
     return true;
 }
 	if (elem.obj.idnam == "home-cont") {
