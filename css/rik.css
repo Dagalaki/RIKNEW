@@ -414,7 +414,7 @@ div.list-container.league .start-info {
     float: left;
     /*  margin-right: 5px;
     margin-left: 5px;*/
-    border: solid 5px transparent;
+   /* border: solid 5px transparent;*/
     border-radius:10px;
     background-color: #23A6BB;
     text-align: center;
