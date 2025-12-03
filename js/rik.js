@@ -1386,7 +1386,7 @@ console.log(menu);
     this.rikMObj.init(this.buttons[0], "", "");
 }
 SideBar.prototype.open = function () {
-    document.getElementsByClassName('scene-container')[0].style.left = '82px';
+   // document.getElementsByClassName('scene-container')[0].style.left = '82px';
     this.isOpen = true;
 	this.elem.style.width = "295px";
 	//GLOBALS.scenemgr.sceneStack[GLOBALS.scenemgr.sceneStack.length - 1].obj.elem.style.left = "190px";
@@ -1410,7 +1410,7 @@ SideBar.prototype.open = function () {
 	}
 }
 SideBar.prototype.close = function () {
-    document.getElementsByClassName('scene-container')[0].style.left = '0px';
+   // document.getElementsByClassName('scene-container')[0].style.left = '0px';
     this.isOpen = false;
 	this.elem.style.width = "174px";
 	//GLOBALS.scenemgr.sceneStack[GLOBALS.scenemgr.sceneStack.length - 1].obj.elem.style.left = "0px";

@@ -4155,11 +4155,11 @@ ul li {
 	padding: 10px;
 }
 .basic-menu-container.open{
-	left:316px!important;
+	/*left:316px!important;*/
 }
 
 .vertical-menu-container .basic-menu-container {
-	left: 62px !important;
+	/*left: 62px !important;*/
 	top: 44px !important;
 }
 

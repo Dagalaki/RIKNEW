@@ -12,6 +12,11 @@ img{
 
 .scene-container {
     height: 720px !important;
+    left:82px!important;
+}
+
+.basic-menu-container{
+    left:258px!important;
 }
 
 .popup {
